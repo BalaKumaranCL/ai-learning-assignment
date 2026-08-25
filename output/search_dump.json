@@ -1,0 +1,1070 @@
+{
+  "current": {
+    "score": 5,
+    "total": 8,
+    "per_question": [
+      {
+        "id": "Q1",
+        "question": "What is the default value of retry_backoff_ms in Client.send()?",
+        "expected_source_file": "client.md",
+        "expected_section": "Client.send() > Parameters",
+        "expected_answer_snippet": "retry_backoff_ms | integer | 1000",
+        "hit": false,
+        "hit_rank": null,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.3711,
+            "chunk_id": "client::current::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "rom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`.\n\n## Client.close()\n\n`Client.close()` releases the "
+          },
+          {
+            "rank": 2,
+            "score": 0.214,
+            "chunk_id": "client::current::0",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API.\n\n## Client.send()\n\n`Client.send()` sends a single message to the Acme API and waits for a\nresponse. Use it for simple, non-"
+          },
+          {
+            "rank": 3,
+            "score": 0.2067,
+            "chunk_id": "authentication::current::3",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "he keys to disk, so rotating a key only requires\nrestarting your process with the new `api_key` value.\n"
+          },
+          {
+            "rank": 4,
+            "score": 0.1575,
+            "chunk_id": "client::current::2",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "| 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror.\n\n### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live"
+          },
+          {
+            "rank": 5,
+            "score": 0.141,
+            "chunk_id": "errors::current::1",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` "
+          }
+        ]
+      },
+      {
+        "id": "Q2",
+        "question": "What is the type and default value of timeout_ms in Client.send()?",
+        "expected_source_file": "client.md",
+        "expected_section": "Client.send() > Parameters",
+        "expected_answer_snippet": "timeout_ms | integer | 30000",
+        "hit": false,
+        "hit_rank": null,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.275,
+            "chunk_id": "streaming::current::1",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": " the entire response is ready.\n\n### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| chunk_size | integer | 512 | false |\n\n`message` and `timeout_ms` behave the same as they do on `Client.send()`.\n`chunk_size` controls the maximum number of bytes delivered per\n`StreamChunk`.\n\n### Example\n\n```python\nclient "
+          },
+          {
+            "rank": 2,
+            "score": 0.2379,
+            "chunk_id": "client::current::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "rom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`.\n\n## Client.close()\n\n`Client.close()` releases the "
+          },
+          {
+            "rank": 3,
+            "score": 0.2,
+            "chunk_id": "client::current::0",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API.\n\n## Client.send()\n\n`Client.send()` sends a single message to the Acme API and waits for a\nresponse. Use it for simple, non-"
+          },
+          {
+            "rank": 4,
+            "score": 0.1932,
+            "chunk_id": "authentication::current::3",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "he keys to disk, so rotating a key only requires\nrestarting your process with the new `api_key` value.\n"
+          },
+          {
+            "rank": 5,
+            "score": 0.1722,
+            "chunk_id": "requests::current::0",
+            "source_file": "requests.md",
+            "page_id": "requests",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Requests\n\nEvery call made through `Client.send()` or `Client.stream()` is built into a\n`Request` under the hood. Most users never construct a `Request` directly,\nbut you can pass a `RequestOptions` object to customize low-level behavior.\n\n## RequestOptions\n\n### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| headers | dict | {} | false |\n| query_params | dict | {} | false |\n"
+          }
+        ]
+      },
+      {
+        "id": "Q3",
+        "question": "What value is passed for retry_backoff_ms in the Client.send() code example?",
+        "expected_source_file": "client.md",
+        "expected_section": "Client.send() > Example",
+        "expected_answer_snippet": "retry_backoff_ms=2000",
+        "hit": true,
+        "hit_rank": 1,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.324,
+            "chunk_id": "client::current::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "rom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`.\n\n## Client.close()\n\n`Client.close()` releases the "
+          },
+          {
+            "rank": 2,
+            "score": 0.1986,
+            "chunk_id": "errors::current::2",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "up to `max_retries` times before\nletting the `TimeoutError` propagate to your code. `RateLimitError` and\n`TimeoutError` are both safe to retry. `AuthError` and `ValidationError` are\nnot retryable because retrying with the same bad input will always fail\nagain.\n\n### Example\n\n```python\nfrom acme_sdk import Client, TimeoutError\n\nclient = Client(api_key=\"sk_live_example\")\n\ntry:\n    client.send(message"
+          },
+          {
+            "rank": 3,
+            "score": 0.187,
+            "chunk_id": "authentication::current::3",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "he keys to disk, so rotating a key only requires\nrestarting your process with the new `api_key` value.\n"
+          },
+          {
+            "rank": 4,
+            "score": 0.1758,
+            "chunk_id": "client::current::2",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "| 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror.\n\n### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live"
+          },
+          {
+            "rank": 5,
+            "score": 0.1508,
+            "chunk_id": "client::current::0",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API.\n\n## Client.send()\n\n`Client.send()` sends a single message to the Acme API and waits for a\nresponse. Use it for simple, non-"
+          }
+        ]
+      },
+      {
+        "id": "Q4",
+        "question": "What parameter is required when creating an AuthConfig for the Client?",
+        "expected_source_file": "authentication.md",
+        "expected_section": "AuthConfig > Parameters",
+        "expected_answer_snippet": "api_key | string | \u2014 | true",
+        "hit": true,
+        "hit_rank": 1,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.3987,
+            "chunk_id": "authentication::current::0",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Authentication\n\nThe Acme SDK authenticates using an API key. You configure authentication by\nconstructing a `Client` with an `AuthConfig`, or by passing `api_key`\ndirectly to `Client()`.\n\n## AuthConfig\n\n`AuthConfig` describes how the client should authenticate its requests.\n\n### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| api_key | string | \u2014 | true |\n| region | string |"
+          },
+          {
+            "rank": 2,
+            "score": 0.218,
+            "chunk_id": "errors::current::1",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` "
+          },
+          {
+            "rank": 3,
+            "score": 0.2015,
+            "chunk_id": "authentication::current::2",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "ow often a\ntemporary session token is refreshed in the background.\n\n### Example\n\n```python\nfrom acme_sdk import Client, AuthConfig\n\nauth = AuthConfig(api_key=\"sk_live_example\", region=\"eu\")\nclient = Client(auth=auth)\n```\n\n## Rotating keys\n\nIf a key is compromised, revoke it from the Acme dashboard and issue a new\none. The SDK does not cache keys to disk, so rotating a key only requires\nrestarting "
+          },
+          {
+            "rank": 4,
+            "score": 0.0848,
+            "chunk_id": "client::current::0",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API.\n\n## Client.send()\n\n`Client.send()` sends a single message to the Acme API and waits for a\nresponse. Use it for simple, non-"
+          },
+          {
+            "rank": 5,
+            "score": 0.0837,
+            "chunk_id": "client::current::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "rom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`.\n\n## Client.close()\n\n`Client.close()` releases the "
+          }
+        ]
+      },
+      {
+        "id": "Q5",
+        "question": "What does Client.stream() return?",
+        "expected_source_file": "streaming.md",
+        "expected_section": "Client.stream()",
+        "expected_answer_snippet": "returns an iterator that yields",
+        "hit": true,
+        "hit_rank": 1,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.3552,
+            "chunk_id": "streaming::current::0",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Streaming\n\n## Client.stream()\n\n`Client.stream()` sends a message the same way `Client.send()` does, but\ninstead of waiting for the full reply it returns an iterator that yields\n`StreamChunk` objects as they arrive from the server. Use it when you want to\nshow partial output to a user as soon as it is available, instead of\nblocking until the entire response is ready.\n\n### Parameters\n\n| Name | Typ"
+          },
+          {
+            "rank": 2,
+            "score": 0.2618,
+            "chunk_id": "streaming::current::2",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "delivered per\n`StreamChunk`.\n\n### Example\n\n```python\nclient = Client(api_key=\"sk_live_example\")\n\nfor chunk in client.stream(message=\"hello\"):\n    print(chunk.text, end=\"\")\n```\n\n## StreamChunk\n\nEach `StreamChunk` yielded by `Client.stream()` has a `text` field holding\nthe partial text for that chunk, and a `is_final` boolean that is `true` on\nthe last chunk of the stream.\n"
+          },
+          {
+            "rank": 3,
+            "score": 0.1898,
+            "chunk_id": "client::current::0",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API.\n\n## Client.send()\n\n`Client.send()` sends a single message to the Acme API and waits for a\nresponse. Use it for simple, non-"
+          },
+          {
+            "rank": 4,
+            "score": 0.1491,
+            "chunk_id": "authentication::current::2",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "ow often a\ntemporary session token is refreshed in the background.\n\n### Example\n\n```python\nfrom acme_sdk import Client, AuthConfig\n\nauth = AuthConfig(api_key=\"sk_live_example\", region=\"eu\")\nclient = Client(auth=auth)\n```\n\n## Rotating keys\n\nIf a key is compromised, revoke it from the Acme dashboard and issue a new\none. The SDK does not cache keys to disk, so rotating a key only requires\nrestarting "
+          },
+          {
+            "rank": 5,
+            "score": 0.1336,
+            "chunk_id": "requests::current::0",
+            "source_file": "requests.md",
+            "page_id": "requests",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Requests\n\nEvery call made through `Client.send()` or `Client.stream()` is built into a\n`Request` under the hood. Most users never construct a `Request` directly,\nbut you can pass a `RequestOptions` object to customize low-level behavior.\n\n## RequestOptions\n\n### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| headers | dict | {} | false |\n| query_params | dict | {} | false |\n"
+          }
+        ]
+      },
+      {
+        "id": "Q6",
+        "question": "Which exception is raised when timeout_ms is exceeded?",
+        "expected_source_file": "errors.md",
+        "expected_section": "Exception table",
+        "expected_answer_snippet": "TimeoutError | `timeout_ms` is exceeded",
+        "hit": true,
+        "hit_rank": 1,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.4595,
+            "chunk_id": "errors::current::0",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Errors\n\nThe Acme SDK raises typed exceptions instead of returning error codes for\nfailure cases. All SDK exceptions inherit from `AcmeError`.\n\n## Exception table\n\n| Exception | Raised when | Retryable |\n|---|---|---|\n| TimeoutError | `timeout_ms` is exceeded before the server replies | true |\n| RateLimitError | the account has exceeded its request quota | true |\n| AuthError | the `api_key` is mi"
+          },
+          {
+            "rank": 2,
+            "score": 0.1409,
+            "chunk_id": "errors::current::1",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` "
+          },
+          {
+            "rank": 3,
+            "score": 0.1275,
+            "chunk_id": "errors::current::3",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "ent(api_key=\"sk_live_example\")\n\ntry:\n    client.send(message=\"hello\", timeout_ms=100)\nexcept TimeoutError:\n    print(\"the request timed out\")\n```\n\n## Handling AcmeError generically\n\nIf you don't need to distinguish between exception types, catch the base\n`AcmeError` class instead of each subclass individually.\n"
+          },
+          {
+            "rank": 4,
+            "score": 0.0911,
+            "chunk_id": "streaming::current::1",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": " the entire response is ready.\n\n### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| chunk_size | integer | 512 | false |\n\n`message` and `timeout_ms` behave the same as they do on `Client.send()`.\n`chunk_size` controls the maximum number of bytes delivered per\n`StreamChunk`.\n\n### Example\n\n```python\nclient "
+          },
+          {
+            "rank": 5,
+            "score": 0.0792,
+            "chunk_id": "client::current::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "rom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`.\n\n## Client.close()\n\n`Client.close()` releases the "
+          }
+        ]
+      },
+      {
+        "id": "Q7",
+        "question": "Which fields are required in the Response object?",
+        "expected_source_file": "responses.md",
+        "expected_section": "Response object > Fields",
+        "expected_answer_snippet": "status_code | integer | \u2014 | true",
+        "hit": true,
+        "hit_rank": 1,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.4954,
+            "chunk_id": "responses::current::0",
+            "source_file": "responses.md",
+            "page_id": "responses",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Responses\n\n`Client.send()` returns a `Response` object once the API has replied. The\n`Response` object gives you access to the status code, the parsed body, and\nany headers the server sent back.\n\n## Response object\n\n### Fields\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| status_code | integer | \u2014 | true |\n| body | dict | \u2014 | true |\n| headers | dict | {} | false |\n\n`status_code` is t"
+          },
+          {
+            "rank": 2,
+            "score": 0.1691,
+            "chunk_id": "responses::current::1",
+            "source_file": "responses.md",
+            "page_id": "responses",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "| true |\n| headers | dict | {} | false |\n\n`status_code` is the HTTP status code returned by the Acme API and is always\npresent. `body` holds the parsed JSON payload and is always present, even if\nit is an empty object. `headers` holds any response headers and defaults to\nan empty dict when the server sends none.\n\n### Example\n\n```python\nresponse = client.send(message=\"hello\")\n\nif response.status_co"
+          },
+          {
+            "rank": 3,
+            "score": 0.139,
+            "chunk_id": "requests::current::0",
+            "source_file": "requests.md",
+            "page_id": "requests",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Requests\n\nEvery call made through `Client.send()` or `Client.stream()` is built into a\n`Request` under the hood. Most users never construct a `Request` directly,\nbut you can pass a `RequestOptions` object to customize low-level behavior.\n\n## RequestOptions\n\n### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| headers | dict | {} | false |\n| query_params | dict | {} | false |\n"
+          },
+          {
+            "rank": 4,
+            "score": 0.0839,
+            "chunk_id": "streaming::current::1",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": " the entire response is ready.\n\n### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| chunk_size | integer | 512 | false |\n\n`message` and `timeout_ms` behave the same as they do on `Client.send()`.\n`chunk_size` controls the maximum number of bytes delivered per\n`StreamChunk`.\n\n### Example\n\n```python\nclient "
+          },
+          {
+            "rank": 5,
+            "score": 0.0823,
+            "chunk_id": "errors::current::1",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` "
+          }
+        ]
+      },
+      {
+        "id": "Q8",
+        "question": "What is the default value of max_retries in Client.send()?",
+        "expected_source_file": "client.md",
+        "expected_section": "Client.send() > Parameters",
+        "expected_answer_snippet": "max_retries | integer | 3",
+        "hit": false,
+        "hit_rank": null,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.214,
+            "chunk_id": "client::current::0",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API.\n\n## Client.send()\n\n`Client.send()` sends a single message to the Acme API and waits for a\nresponse. Use it for simple, non-"
+          },
+          {
+            "rank": 2,
+            "score": 0.2067,
+            "chunk_id": "authentication::current::3",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "he keys to disk, so rotating a key only requires\nrestarting your process with the new `api_key` value.\n"
+          },
+          {
+            "rank": 3,
+            "score": 0.1803,
+            "chunk_id": "errors::current::2",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "up to `max_retries` times before\nletting the `TimeoutError` propagate to your code. `RateLimitError` and\n`TimeoutError` are both safe to retry. `AuthError` and `ValidationError` are\nnot retryable because retrying with the same bad input will always fail\nagain.\n\n### Example\n\n```python\nfrom acme_sdk import Client, TimeoutError\n\nclient = Client(api_key=\"sk_live_example\")\n\ntry:\n    client.send(message"
+          },
+          {
+            "rank": 4,
+            "score": 0.161,
+            "chunk_id": "client::current::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "rom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`.\n\n## Client.close()\n\n`Client.close()` releases the "
+          },
+          {
+            "rank": 5,
+            "score": 0.1575,
+            "chunk_id": "client::current::2",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "",
+            "text": "| 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror.\n\n### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live"
+          }
+        ]
+      }
+    ]
+  },
+  "structure_aware": {
+    "score": 8,
+    "total": 8,
+    "per_question": [
+      {
+        "id": "Q1",
+        "question": "What is the default value of retry_backoff_ms in Client.send()?",
+        "expected_source_file": "client.md",
+        "expected_section": "Client.send() > Parameters",
+        "expected_answer_snippet": "retry_backoff_ms | integer | 1000",
+        "hit": true,
+        "hit_rank": 2,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.4017,
+            "chunk_id": "client::structure::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client > Client.send() > Example",
+            "text": "### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`."
+          },
+          {
+            "rank": 2,
+            "score": 0.2046,
+            "chunk_id": "client::structure::2",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client > Client.send() > Parameters",
+            "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| retry_backoff_ms | integer | 1000 | false |\n| max_retries | integer | 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror."
+          },
+          {
+            "rank": 3,
+            "score": 0.1854,
+            "chunk_id": "client::structure::0",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client",
+            "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API."
+          },
+          {
+            "rank": 4,
+            "score": 0.1467,
+            "chunk_id": "client::structure::1",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client > Client.send()",
+            "text": "## Client.send()\n\n`Client.send()` sends a single message to the Acme API and waits for a\nresponse. Use it for simple, non-streaming calls where you want the full\nreply before continuing."
+          },
+          {
+            "rank": 5,
+            "score": 0.1413,
+            "chunk_id": "errors::structure::2",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Errors > Exception table > Example",
+            "text": "### Example\n\n```python\nfrom acme_sdk import Client, TimeoutError\n\nclient = Client(api_key=\"sk_live_example\")\n\ntry:\n    client.send(message=\"hello\", timeout_ms=100)\nexcept TimeoutError:\n    print(\"the request timed out\")\n```"
+          }
+        ]
+      },
+      {
+        "id": "Q2",
+        "question": "What is the type and default value of timeout_ms in Client.send()?",
+        "expected_source_file": "client.md",
+        "expected_section": "Client.send() > Parameters",
+        "expected_answer_snippet": "timeout_ms | integer | 30000",
+        "hit": true,
+        "hit_rank": 4,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.2976,
+            "chunk_id": "streaming::structure::2",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Streaming > Client.stream() > Parameters",
+            "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| chunk_size | integer | 512 | false |\n\n`message` and `timeout_ms` behave the same as they do on `Client.send()`.\n`chunk_size` controls the maximum number of bytes delivered per\n`StreamChunk`."
+          },
+          {
+            "rank": 2,
+            "score": 0.257,
+            "chunk_id": "client::structure::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client > Client.send() > Example",
+            "text": "### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`."
+          },
+          {
+            "rank": 3,
+            "score": 0.2156,
+            "chunk_id": "errors::structure::2",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Errors > Exception table > Example",
+            "text": "### Example\n\n```python\nfrom acme_sdk import Client, TimeoutError\n\nclient = Client(api_key=\"sk_live_example\")\n\ntry:\n    client.send(message=\"hello\", timeout_ms=100)\nexcept TimeoutError:\n    print(\"the request timed out\")\n```"
+          },
+          {
+            "rank": 4,
+            "score": 0.2067,
+            "chunk_id": "client::structure::2",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client > Client.send() > Parameters",
+            "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| retry_backoff_ms | integer | 1000 | false |\n| max_retries | integer | 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror."
+          },
+          {
+            "rank": 5,
+            "score": 0.173,
+            "chunk_id": "client::structure::0",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client",
+            "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API."
+          }
+        ]
+      },
+      {
+        "id": "Q3",
+        "question": "What value is passed for retry_backoff_ms in the Client.send() code example?",
+        "expected_source_file": "client.md",
+        "expected_section": "Client.send() > Example",
+        "expected_answer_snippet": "retry_backoff_ms=2000",
+        "hit": true,
+        "hit_rank": 1,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.4032,
+            "chunk_id": "client::structure::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client > Client.send() > Example",
+            "text": "### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`."
+          },
+          {
+            "rank": 2,
+            "score": 0.1895,
+            "chunk_id": "errors::structure::2",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Errors > Exception table > Example",
+            "text": "### Example\n\n```python\nfrom acme_sdk import Client, TimeoutError\n\nclient = Client(api_key=\"sk_live_example\")\n\ntry:\n    client.send(message=\"hello\", timeout_ms=100)\nexcept TimeoutError:\n    print(\"the request timed out\")\n```"
+          },
+          {
+            "rank": 3,
+            "score": 0.1724,
+            "chunk_id": "responses::structure::3",
+            "source_file": "responses.md",
+            "page_id": "responses",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Responses > Response object > Example",
+            "text": "### Example\n\n```python\nresponse = client.send(message=\"hello\")\n\nif response.status_code == 200:\n    print(response.body)\n```"
+          },
+          {
+            "rank": 4,
+            "score": 0.1553,
+            "chunk_id": "streaming::structure::3",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Streaming > Client.stream() > Example",
+            "text": "### Example\n\n```python\nclient = Client(api_key=\"sk_live_example\")\n\nfor chunk in client.stream(message=\"hello\"):\n    print(chunk.text, end=\"\")\n```"
+          },
+          {
+            "rank": 5,
+            "score": 0.1552,
+            "chunk_id": "responses::structure::0",
+            "source_file": "responses.md",
+            "page_id": "responses",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Responses",
+            "text": "# Responses\n\n`Client.send()` returns a `Response` object once the API has replied. The\n`Response` object gives you access to the status code, the parsed body, and\nany headers the server sent back."
+          }
+        ]
+      },
+      {
+        "id": "Q4",
+        "question": "What parameter is required when creating an AuthConfig for the Client?",
+        "expected_source_file": "authentication.md",
+        "expected_section": "AuthConfig > Parameters",
+        "expected_answer_snippet": "api_key | string | \u2014 | true",
+        "hit": true,
+        "hit_rank": 5,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.4128,
+            "chunk_id": "authentication::structure::1",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Authentication > AuthConfig",
+            "text": "## AuthConfig\n\n`AuthConfig` describes how the client should authenticate its requests."
+          },
+          {
+            "rank": 2,
+            "score": 0.2763,
+            "chunk_id": "authentication::structure::3",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Authentication > AuthConfig > Example",
+            "text": "### Example\n\n```python\nfrom acme_sdk import Client, AuthConfig\n\nauth = AuthConfig(api_key=\"sk_live_example\", region=\"eu\")\nclient = Client(auth=auth)\n```"
+          },
+          {
+            "rank": 3,
+            "score": 0.1821,
+            "chunk_id": "authentication::structure::0",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Authentication",
+            "text": "# Authentication\n\nThe Acme SDK authenticates using an API key. You configure authentication by\nconstructing a `Client` with an `AuthConfig`, or by passing `api_key`\ndirectly to `Client()`."
+          },
+          {
+            "rank": 4,
+            "score": 0.1306,
+            "chunk_id": "errors::structure::1",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Errors > Exception table",
+            "text": "## Exception table\n\n| Exception | Raised when | Retryable |\n|---|---|---|\n| TimeoutError | `timeout_ms` is exceeded before the server replies | true |\n| RateLimitError | the account has exceeded its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` propagate to your code. `RateLimitError` and\n`TimeoutError` are both safe to retry. `AuthError` and `ValidationError` are\nnot retryable because retrying with the same bad input will always fail\nagain."
+          },
+          {
+            "rank": 5,
+            "score": 0.1169,
+            "chunk_id": "authentication::structure::2",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Authentication > AuthConfig > Parameters",
+            "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| api_key | string | \u2014 | true |\n| region | string | \"us\" | false |\n| token_refresh_ms | integer | 3600000 | false |\n\n`api_key` is the secret key issued from your Acme dashboard and is always\nrequired; the client will refuse to start without it. `region` selects which\nregional API endpoint to talk to. `token_refresh_ms` controls how often a\ntemporary session token is refreshed in the background."
+          }
+        ]
+      },
+      {
+        "id": "Q5",
+        "question": "What does Client.stream() return?",
+        "expected_source_file": "streaming.md",
+        "expected_section": "Client.stream()",
+        "expected_answer_snippet": "returns an iterator that yields",
+        "hit": true,
+        "hit_rank": 1,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.3606,
+            "chunk_id": "streaming::structure::1",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Streaming > Client.stream()",
+            "text": "## Client.stream()\n\n`Client.stream()` sends a message the same way `Client.send()` does, but\ninstead of waiting for the full reply it returns an iterator that yields\n`StreamChunk` objects as they arrive from the server. Use it when you want to\nshow partial output to a user as soon as it is available, instead of\nblocking until the entire response is ready."
+          },
+          {
+            "rank": 2,
+            "score": 0.2458,
+            "chunk_id": "streaming::structure::3",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Streaming > Client.stream() > Example",
+            "text": "### Example\n\n```python\nclient = Client(api_key=\"sk_live_example\")\n\nfor chunk in client.stream(message=\"hello\"):\n    print(chunk.text, end=\"\")\n```"
+          },
+          {
+            "rank": 3,
+            "score": 0.2299,
+            "chunk_id": "streaming::structure::4",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Streaming > StreamChunk",
+            "text": "## StreamChunk\n\nEach `StreamChunk` yielded by `Client.stream()` has a `text` field holding\nthe partial text for that chunk, and a `is_final` boolean that is `true` on\nthe last chunk of the stream."
+          },
+          {
+            "rank": 4,
+            "score": 0.2038,
+            "chunk_id": "client::structure::0",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client",
+            "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API."
+          },
+          {
+            "rank": 5,
+            "score": 0.1648,
+            "chunk_id": "requests::structure::0",
+            "source_file": "requests.md",
+            "page_id": "requests",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Requests",
+            "text": "# Requests\n\nEvery call made through `Client.send()` or `Client.stream()` is built into a\n`Request` under the hood. Most users never construct a `Request` directly,\nbut you can pass a `RequestOptions` object to customize low-level behavior."
+          }
+        ]
+      },
+      {
+        "id": "Q6",
+        "question": "Which exception is raised when timeout_ms is exceeded?",
+        "expected_source_file": "errors.md",
+        "expected_section": "Exception table",
+        "expected_answer_snippet": "TimeoutError | `timeout_ms` is exceeded",
+        "hit": true,
+        "hit_rank": 1,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.4066,
+            "chunk_id": "errors::structure::1",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Errors > Exception table",
+            "text": "## Exception table\n\n| Exception | Raised when | Retryable |\n|---|---|---|\n| TimeoutError | `timeout_ms` is exceeded before the server replies | true |\n| RateLimitError | the account has exceeded its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` propagate to your code. `RateLimitError` and\n`TimeoutError` are both safe to retry. `AuthError` and `ValidationError` are\nnot retryable because retrying with the same bad input will always fail\nagain."
+          },
+          {
+            "rank": 2,
+            "score": 0.1175,
+            "chunk_id": "streaming::structure::2",
+            "source_file": "streaming.md",
+            "page_id": "streaming",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Streaming > Client.stream() > Parameters",
+            "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| chunk_size | integer | 512 | false |\n\n`message` and `timeout_ms` behave the same as they do on `Client.send()`.\n`chunk_size` controls the maximum number of bytes delivered per\n`StreamChunk`."
+          },
+          {
+            "rank": 3,
+            "score": 0.1059,
+            "chunk_id": "client::structure::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client > Client.send() > Example",
+            "text": "### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`."
+          },
+          {
+            "rank": 4,
+            "score": 0.0955,
+            "chunk_id": "errors::structure::3",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Errors > Handling AcmeError generically",
+            "text": "## Handling AcmeError generically\n\nIf you don't need to distinguish between exception types, catch the base\n`AcmeError` class instead of each subclass individually."
+          },
+          {
+            "rank": 5,
+            "score": 0.0882,
+            "chunk_id": "responses::structure::4",
+            "source_file": "responses.md",
+            "page_id": "responses",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Responses > Checking for errors",
+            "text": "## Checking for errors\n\nA `status_code` of 200 means success. Any other status code means the call\ndid not succeed; see the Errors page for which exception the SDK raises for\neach case."
+          }
+        ]
+      },
+      {
+        "id": "Q7",
+        "question": "Which fields are required in the Response object?",
+        "expected_source_file": "responses.md",
+        "expected_section": "Response object > Fields",
+        "expected_answer_snippet": "status_code | integer | \u2014 | true",
+        "hit": true,
+        "hit_rank": 3,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.6114,
+            "chunk_id": "responses::structure::1",
+            "source_file": "responses.md",
+            "page_id": "responses",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Responses > Response object",
+            "text": "## Response object"
+          },
+          {
+            "rank": 2,
+            "score": 0.3106,
+            "chunk_id": "responses::structure::0",
+            "source_file": "responses.md",
+            "page_id": "responses",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Responses",
+            "text": "# Responses\n\n`Client.send()` returns a `Response` object once the API has replied. The\n`Response` object gives you access to the status code, the parsed body, and\nany headers the server sent back."
+          },
+          {
+            "rank": 3,
+            "score": 0.245,
+            "chunk_id": "responses::structure::2",
+            "source_file": "responses.md",
+            "page_id": "responses",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Responses > Response object > Fields",
+            "text": "### Fields\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| status_code | integer | \u2014 | true |\n| body | dict | \u2014 | true |\n| headers | dict | {} | false |\n\n`status_code` is the HTTP status code returned by the Acme API and is always\npresent. `body` holds the parsed JSON payload and is always present, even if\nit is an empty object. `headers` holds any response headers and defaults to\nan empty dict when the server sends none."
+          },
+          {
+            "rank": 4,
+            "score": 0.2158,
+            "chunk_id": "responses::structure::3",
+            "source_file": "responses.md",
+            "page_id": "responses",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Responses > Response object > Example",
+            "text": "### Example\n\n```python\nresponse = client.send(message=\"hello\")\n\nif response.status_code == 200:\n    print(response.body)\n```"
+          },
+          {
+            "rank": 5,
+            "score": 0.1,
+            "chunk_id": "authentication::structure::2",
+            "source_file": "authentication.md",
+            "page_id": "authentication",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Authentication > AuthConfig > Parameters",
+            "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| api_key | string | \u2014 | true |\n| region | string | \"us\" | false |\n| token_refresh_ms | integer | 3600000 | false |\n\n`api_key` is the secret key issued from your Acme dashboard and is always\nrequired; the client will refuse to start without it. `region` selects which\nregional API endpoint to talk to. `token_refresh_ms` controls how often a\ntemporary session token is refreshed in the background."
+          }
+        ]
+      },
+      {
+        "id": "Q8",
+        "question": "What is the default value of max_retries in Client.send()?",
+        "expected_source_file": "client.md",
+        "expected_section": "Client.send() > Parameters",
+        "expected_answer_snippet": "max_retries | integer | 3",
+        "hit": true,
+        "hit_rank": 1,
+        "top_5": [
+          {
+            "rank": 1,
+            "score": 0.2253,
+            "chunk_id": "client::structure::2",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client > Client.send() > Parameters",
+            "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| retry_backoff_ms | integer | 1000 | false |\n| max_retries | integer | 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror."
+          },
+          {
+            "rank": 2,
+            "score": 0.1801,
+            "chunk_id": "client::structure::0",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client",
+            "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API."
+          },
+          {
+            "rank": 3,
+            "score": 0.145,
+            "chunk_id": "client::structure::3",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client > Client.send() > Example",
+            "text": "### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`."
+          },
+          {
+            "rank": 4,
+            "score": 0.1426,
+            "chunk_id": "client::structure::1",
+            "source_file": "client.md",
+            "page_id": "client",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Client > Client.send()",
+            "text": "## Client.send()\n\n`Client.send()` sends a single message to the Acme API and waits for a\nresponse. Use it for simple, non-streaming calls where you want the full\nreply before continuing."
+          },
+          {
+            "rank": 5,
+            "score": 0.1373,
+            "chunk_id": "errors::structure::2",
+            "source_file": "errors.md",
+            "page_id": "errors",
+            "sdk_version": "v3",
+            "page_type": "reference",
+            "anchor": "Errors > Exception table > Example",
+            "text": "### Example\n\n```python\nfrom acme_sdk import Client, TimeoutError\n\nclient = Client(api_key=\"sk_live_example\")\n\ntry:\n    client.send(message=\"hello\", timeout_ms=100)\nexcept TimeoutError:\n    print(\"the request timed out\")\n```"
+          }
+        ]
+      }
+    ]
+  }
+}
