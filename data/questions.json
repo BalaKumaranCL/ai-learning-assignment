@@ -1,0 +1,90 @@
+{
+  "answerable": [
+    {
+      "id": "Q1",
+      "question": "What is the default value of retry_backoff_ms in Client.send()?",
+      "expected_source_file": "client.md",
+      "expected_section": "Client.send() > Parameters",
+      "expected_answer_snippet": "retry_backoff_ms | integer | 1000",
+      "depends_on": "parameter_table"
+    },
+    {
+      "id": "Q2",
+      "question": "What is the type and default value of timeout_ms in Client.send()?",
+      "expected_source_file": "client.md",
+      "expected_section": "Client.send() > Parameters",
+      "expected_answer_snippet": "timeout_ms | integer | 30000",
+      "depends_on": "parameter_table"
+    },
+    {
+      "id": "Q3",
+      "question": "What value is passed for retry_backoff_ms in the Client.send() code example?",
+      "expected_source_file": "client.md",
+      "expected_section": "Client.send() > Example",
+      "expected_answer_snippet": "retry_backoff_ms=2000",
+      "depends_on": "code_fence"
+    },
+    {
+      "id": "Q4",
+      "question": "What parameter is required when creating an AuthConfig for the Client?",
+      "expected_source_file": "authentication.md",
+      "expected_section": "AuthConfig > Parameters",
+      "expected_answer_snippet": "api_key | string | — | true",
+      "depends_on": "parameter_table"
+    },
+    {
+      "id": "Q5",
+      "question": "What does Client.stream() return?",
+      "expected_source_file": "streaming.md",
+      "expected_section": "Client.stream()",
+      "expected_answer_snippet": "returns an iterator that yields",
+      "depends_on": "prose"
+    },
+    {
+      "id": "Q6",
+      "question": "Which exception is raised when timeout_ms is exceeded?",
+      "expected_source_file": "errors.md",
+      "expected_section": "Exception table",
+      "expected_answer_snippet": "TimeoutError | `timeout_ms` is exceeded",
+      "depends_on": "parameter_table"
+    },
+    {
+      "id": "Q7",
+      "question": "Which fields are required in the Response object?",
+      "expected_source_file": "responses.md",
+      "expected_section": "Response object > Fields",
+      "expected_answer_snippet": "status_code | integer | — | true",
+      "depends_on": "parameter_table"
+    },
+    {
+      "id": "Q8",
+      "question": "What is the default value of max_retries in Client.send()?",
+      "expected_source_file": "client.md",
+      "expected_section": "Client.send() > Parameters",
+      "expected_answer_snippet": "max_retries | integer | 3",
+      "depends_on": "parameter_table"
+    }
+  ],
+  "unanswerable": [
+    {
+      "id": "U1",
+      "question": "What is the rate limit for Client.send()?",
+      "reason": "The corpus documents that RateLimitError exists but never states a numeric rate limit or quota."
+    },
+    {
+      "id": "U2",
+      "question": "How many concurrent requests does the SDK support?",
+      "reason": "No page mentions concurrency limits."
+    },
+    {
+      "id": "U3",
+      "question": "What uptime SLA does the SDK guarantee?",
+      "reason": "No page mentions an SLA or uptime guarantee."
+    }
+  ],
+  "generation_targets": {
+    "answerable": ["Q1", "Q3", "Q6"],
+    "unanswerable": ["U1", "U2", "U3"]
+  },
+  "filter_demo_query": "What is the default value of retry_backoff_ms in Client.send?"
+}
