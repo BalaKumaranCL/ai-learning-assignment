@@ -1,0 +1,66 @@
+[
+  {
+    "id": "G1",
+    "question": "What is the default token_refresh_ms for AuthConfig?",
+    "baseline_label": "G",
+    "baseline_rank": 2,
+    "fused_rank": 2,
+    "verdict": "UNCHANGED"
+  },
+  {
+    "id": "G3",
+    "question": "What is the default retry_backoff_ms if I don't set one on send()?",
+    "baseline_label": "G",
+    "baseline_rank": 2,
+    "fused_rank": 3,
+    "verdict": "WORSENED"
+  },
+  {
+    "id": "G4",
+    "question": "What is the default max_retries value before send() gives up retrying?",
+    "baseline_label": "G",
+    "baseline_rank": 2,
+    "fused_rank": 1,
+    "verdict": "FIXED"
+  },
+  {
+    "id": "G6",
+    "question": "If I pass a malformed parameter, what does the SDK throw?",
+    "baseline_label": "R",
+    "baseline_rank": null,
+    "fused_rank": 3,
+    "verdict": "FIXED"
+  },
+  {
+    "id": "G8",
+    "question": "Is body_encoding json or form by default in RequestOptions?",
+    "baseline_label": "G",
+    "baseline_rank": 2,
+    "fused_rank": 1,
+    "verdict": "FIXED"
+  },
+  {
+    "id": "G9",
+    "question": "How big is each chunk yielded by stream() unless I override it?",
+    "baseline_label": "R",
+    "baseline_rank": null,
+    "fused_rank": null,
+    "verdict": "UNFIXED"
+  },
+  {
+    "id": "G11",
+    "question": "If the response status code isn't 200 what does that mean for my request?",
+    "baseline_label": "G",
+    "baseline_rank": 3,
+    "fused_rank": 2,
+    "verdict": "IMPROVED"
+  },
+  {
+    "id": "G12",
+    "question": "My API key got leaked, what steps do I take to rotate it?",
+    "baseline_label": "G",
+    "baseline_rank": 2,
+    "fused_rank": 2,
+    "verdict": "UNCHANGED"
+  }
+]
