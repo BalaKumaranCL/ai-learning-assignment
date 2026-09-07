@@ -1,0 +1,118 @@
+{
+  "diagnoses": [
+    {
+      "id": "G1",
+      "question": "What is the default token_refresh_ms for AuthConfig?",
+      "expected_chunk_id": "authentication::structure::2",
+      "exact_token": true,
+      "label": "G",
+      "evidence": "correct chunk `authentication::structure::2` was in the top-3 at rank #2, but a top-1-only reader would still cite `authentication::structure::1` instead",
+      "hit_rank": 2
+    },
+    {
+      "id": "G2",
+      "question": "When should I call close() on my client and what does it clean up?",
+      "expected_chunk_id": "client::structure::4",
+      "exact_token": false,
+      "label": "HIT",
+      "evidence": "correct chunk `client::structure::4` ranked #1 -- clean hit",
+      "hit_rank": 1
+    },
+    {
+      "id": "G3",
+      "question": "What is the default retry_backoff_ms if I don't set one on send()?",
+      "expected_chunk_id": "client::structure::2",
+      "exact_token": true,
+      "label": "G",
+      "evidence": "correct chunk `client::structure::2` was in the top-3 at rank #2, but a top-1-only reader would still cite `client::structure::3` instead",
+      "hit_rank": 2
+    },
+    {
+      "id": "G4",
+      "question": "What is the default max_retries value before send() gives up retrying?",
+      "expected_chunk_id": "client::structure::2",
+      "exact_token": true,
+      "label": "G",
+      "evidence": "correct chunk `client::structure::2` was in the top-3 at rank #2, but a top-1-only reader would still cite `responses::structure::0` instead",
+      "hit_rank": 2
+    },
+    {
+      "id": "G5",
+      "question": "What exception fires if my API key is missing or wrong?",
+      "expected_chunk_id": "errors::structure::1",
+      "exact_token": false,
+      "label": "HIT",
+      "evidence": "correct chunk `errors::structure::1` ranked #1 -- clean hit",
+      "hit_rank": 1
+    },
+    {
+      "id": "G6",
+      "question": "If I pass a malformed parameter, what does the SDK throw?",
+      "expected_chunk_id": "errors::structure::1",
+      "exact_token": false,
+      "label": "R",
+      "evidence": "correct chunk `errors::structure::1` ranked #4 -- outside the top-3 cutoff",
+      "hit_rank": null
+    },
+    {
+      "id": "G7",
+      "question": "Can I safely retry a send() call twice without it running twice server-side?",
+      "expected_chunk_id": "requests::structure::4",
+      "exact_token": false,
+      "label": "HIT",
+      "evidence": "correct chunk `requests::structure::4` ranked #1 -- clean hit",
+      "hit_rank": 1
+    },
+    {
+      "id": "G8",
+      "question": "Is body_encoding json or form by default in RequestOptions?",
+      "expected_chunk_id": "requests::structure::2",
+      "exact_token": true,
+      "label": "G",
+      "evidence": "correct chunk `requests::structure::2` was in the top-3 at rank #2, but a top-1-only reader would still cite `requests::structure::1` instead",
+      "hit_rank": 2
+    },
+    {
+      "id": "G9",
+      "question": "How big is each chunk yielded by stream() unless I override it?",
+      "expected_chunk_id": "streaming::structure::2",
+      "exact_token": false,
+      "label": "R",
+      "evidence": "correct chunk `streaming::structure::2` ranked #29 -- outside the top-3 cutoff",
+      "hit_rank": null
+    },
+    {
+      "id": "G10",
+      "question": "How do I know when a stream has finished sending chunks?",
+      "expected_chunk_id": "streaming::structure::4",
+      "exact_token": false,
+      "label": "HIT",
+      "evidence": "correct chunk `streaming::structure::4` ranked #1 -- clean hit",
+      "hit_rank": 1
+    },
+    {
+      "id": "G11",
+      "question": "If the response status code isn't 200 what does that mean for my request?",
+      "expected_chunk_id": "responses::structure::4",
+      "exact_token": false,
+      "label": "G",
+      "evidence": "correct chunk `responses::structure::4` was in the top-3 at rank #3, but a top-1-only reader would still cite `responses::structure::3` instead",
+      "hit_rank": 3
+    },
+    {
+      "id": "G12",
+      "question": "My API key got leaked, what steps do I take to rotate it?",
+      "expected_chunk_id": "authentication::structure::4",
+      "exact_token": false,
+      "label": "G",
+      "evidence": "correct chunk `authentication::structure::4` was in the top-3 at rank #2, but a top-1-only reader would still cite `authentication::structure::0` instead",
+      "hit_rank": 2
+    }
+  ],
+  "tally": {
+    "HIT": 4,
+    "R": 2,
+    "G": 6,
+    "NOT_IN_CORPUS": 0
+  }
+}
