@@ -1,0 +1,27 @@
+{
+  "replay_seed": 501,
+  "replay_trace_id": "trace-00579",
+  "result": {
+    "trace_id": "trace-00579",
+    "original_raw_output": "## AuthConfig\n\n`AuthConfig` describes how the client should authenticate its requests.",
+    "original_answered": true,
+    "replayed_raw_output": "## AuthConfig\n\n`AuthConfig` describes how the client should authenticate its requests.",
+    "replayed_answered": true,
+    "replayed_chunk_id": "authentication::structure::1",
+    "replayed_score": 0.3959318396149213,
+    "replay_retriever_version": "rrf_fusion_v1_k60",
+    "replay_generator_version": "verbatim_cite_or_refuse_v2_rrf_confidence",
+    "replay_min_score_threshold": 0.38,
+    "outputs_match": true,
+    "missing_fields_in_original_trace": [
+      "retriever_version",
+      "generator_version",
+      "min_score_threshold",
+      "retrieved",
+      "cited_chunk_id",
+      "latency_ms"
+    ],
+    "sdk_version_filter_used_for_replay": "v3",
+    "sdk_version_filter_was_logged": true
+  }
+}
