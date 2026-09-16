@@ -1,0 +1,16 @@
+PREDICTION -- written 2026-09-16, BEFORE designing or running judge_v2.
+
+agreement_before = 74.2% (23/31). Two distinct disagreement clusters exist
+in the 8 misses: (a) judge_v1 marks a fluent, substantial-looking answer
+"helpful" even when it's citing the wrong SDK version or a tangential
+snippet (E02, E16, E21, E22), and (b) judge_v1 marks EVERY refusal
+"unhelpful," even a correct one for a genuinely out-of-corpus question
+(E12, E23, E30, E31).
+
+Using E21 (wrong-version) and E16 (tangential citation) as the two
+few-shot disagreement examples driving the v2 rewrite:
+
+I predict that fixing cluster (a) alone will raise agreement from 74.2%
+to about 84% (26/31), while leaving cluster (b)'s 4 cases (E12, E23, E30,
+E31) untouched, since that is a separate, unrelated rule this specific
+fix does not address.

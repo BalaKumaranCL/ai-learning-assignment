@@ -1,0 +1,510 @@
+{
+  "score": 11,
+  "total": 12,
+  "per_question": [
+    {
+      "id": "G1",
+      "question": "What is the default token_refresh_ms for AuthConfig?",
+      "expected_chunk_id": "authentication::structure::2",
+      "hit": true,
+      "hit_rank": 2,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0325,
+          "chunk_id": "authentication::structure::1",
+          "source_file": "authentication.md",
+          "page_id": "authentication",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Authentication > AuthConfig",
+          "text": "## AuthConfig\n\n`AuthConfig` describes how the client should authenticate its requests."
+        },
+        {
+          "rank": 2,
+          "score": 0.0325,
+          "chunk_id": "authentication::structure::2",
+          "source_file": "authentication.md",
+          "page_id": "authentication",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Authentication > AuthConfig > Parameters",
+          "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| api_key | string | \u2014 | true |\n| region | string | \"us\" | false |\n| token_refresh_ms | integer | 3600000 | false |\n\n`api_key` is the secret key issued from your Acme dashboard and is always\nrequired; the client will refuse to start without it. `region` selects which\nregional API endpoint to talk to. `token_refresh_ms` controls how often a\ntemporary session token is refreshed in the background."
+        },
+        {
+          "rank": 3,
+          "score": 0.0315,
+          "chunk_id": "authentication::structure::3",
+          "source_file": "authentication.md",
+          "page_id": "authentication",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Authentication > AuthConfig > Example",
+          "text": "### Example\n\n```python\nfrom acme_sdk import Client, AuthConfig\n\nauth = AuthConfig(api_key=\"sk_live_example\", region=\"eu\")\nclient = Client(auth=auth)\n```"
+        }
+      ]
+    },
+    {
+      "id": "G2",
+      "question": "When should I call close() on my client and what does it clean up?",
+      "expected_chunk_id": "client::structure::4",
+      "hit": true,
+      "hit_rank": 1,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0328,
+          "chunk_id": "client::structure::4",
+          "source_file": "client.md",
+          "page_id": "client",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Client > Client.close()",
+          "text": "## Client.close()\n\n`Client.close()` releases the underlying network connection pool. Call it\nwhen you are done using a client, for example at the end of a script or in a\n`finally` block. It takes no parameters and returns nothing."
+        },
+        {
+          "rank": 2,
+          "score": 0.0323,
+          "chunk_id": "streaming::structure::1",
+          "source_file": "streaming.md",
+          "page_id": "streaming",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Streaming > Client.stream()",
+          "text": "## Client.stream()\n\n`Client.stream()` sends a message the same way `Client.send()` does, but\ninstead of waiting for the full reply it returns an iterator that yields\n`StreamChunk` objects as they arrive from the server. Use it when you want to\nshow partial output to a user as soon as it is available, instead of\nblocking until the entire response is ready."
+        },
+        {
+          "rank": 3,
+          "score": 0.0313,
+          "chunk_id": "authentication::structure::4",
+          "source_file": "authentication.md",
+          "page_id": "authentication",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Authentication > Rotating keys",
+          "text": "## Rotating keys\n\nIf a key is compromised, revoke it from the Acme dashboard and issue a new\none. The SDK does not cache keys to disk, so rotating a key only requires\nrestarting your process with the new `api_key` value."
+        }
+      ]
+    },
+    {
+      "id": "G3",
+      "question": "What is the default retry_backoff_ms if I don't set one on send()?",
+      "expected_chunk_id": "client::structure::2",
+      "hit": true,
+      "hit_rank": 3,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0325,
+          "chunk_id": "client::structure::3",
+          "source_file": "client.md",
+          "page_id": "client",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Client > Client.send() > Example",
+          "text": "### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`."
+        },
+        {
+          "rank": 2,
+          "score": 0.0323,
+          "chunk_id": "errors::structure::3",
+          "source_file": "errors.md",
+          "page_id": "errors",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Errors > Handling AcmeError generically",
+          "text": "## Handling AcmeError generically\n\nIf you don't need to distinguish between exception types, catch the base\n`AcmeError` class instead of each subclass individually."
+        },
+        {
+          "rank": 3,
+          "score": 0.0318,
+          "chunk_id": "client::structure::2",
+          "source_file": "client.md",
+          "page_id": "client",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Client > Client.send() > Parameters",
+          "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| retry_backoff_ms | integer | 1000 | false |\n| max_retries | integer | 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror."
+        }
+      ]
+    },
+    {
+      "id": "G4",
+      "question": "What is the default max_retries value before send() gives up retrying?",
+      "expected_chunk_id": "client::structure::2",
+      "hit": true,
+      "hit_rank": 1,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0325,
+          "chunk_id": "client::structure::2",
+          "source_file": "client.md",
+          "page_id": "client",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Client > Client.send() > Parameters",
+          "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| retry_backoff_ms | integer | 1000 | false |\n| max_retries | integer | 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror."
+        },
+        {
+          "rank": 2,
+          "score": 0.0323,
+          "chunk_id": "responses::structure::0",
+          "source_file": "responses.md",
+          "page_id": "responses",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Responses",
+          "text": "# Responses\n\n`Client.send()` returns a `Response` object once the API has replied. The\n`Response` object gives you access to the status code, the parsed body, and\nany headers the server sent back."
+        },
+        {
+          "rank": 3,
+          "score": 0.032,
+          "chunk_id": "errors::structure::1",
+          "source_file": "errors.md",
+          "page_id": "errors",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Errors > Exception table",
+          "text": "## Exception table\n\n| Exception | Raised when | Retryable |\n|---|---|---|\n| TimeoutError | `timeout_ms` is exceeded before the server replies | true |\n| RateLimitError | the account has exceeded its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` propagate to your code. `RateLimitError` and\n`TimeoutError` are both safe to retry. `AuthError` and `ValidationError` are\nnot retryable because retrying with the same bad input will always fail\nagain."
+        }
+      ]
+    },
+    {
+      "id": "G5",
+      "question": "What exception fires if my API key is missing or wrong?",
+      "expected_chunk_id": "errors::structure::1",
+      "hit": true,
+      "hit_rank": 1,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0328,
+          "chunk_id": "errors::structure::1",
+          "source_file": "errors.md",
+          "page_id": "errors",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Errors > Exception table",
+          "text": "## Exception table\n\n| Exception | Raised when | Retryable |\n|---|---|---|\n| TimeoutError | `timeout_ms` is exceeded before the server replies | true |\n| RateLimitError | the account has exceeded its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` propagate to your code. `RateLimitError` and\n`TimeoutError` are both safe to retry. `AuthError` and `ValidationError` are\nnot retryable because retrying with the same bad input will always fail\nagain."
+        },
+        {
+          "rank": 2,
+          "score": 0.0323,
+          "chunk_id": "authentication::structure::0",
+          "source_file": "authentication.md",
+          "page_id": "authentication",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Authentication",
+          "text": "# Authentication\n\nThe Acme SDK authenticates using an API key. You configure authentication by\nconstructing a `Client` with an `AuthConfig`, or by passing `api_key`\ndirectly to `Client()`."
+        },
+        {
+          "rank": 3,
+          "score": 0.0317,
+          "chunk_id": "authentication::structure::4",
+          "source_file": "authentication.md",
+          "page_id": "authentication",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Authentication > Rotating keys",
+          "text": "## Rotating keys\n\nIf a key is compromised, revoke it from the Acme dashboard and issue a new\none. The SDK does not cache keys to disk, so rotating a key only requires\nrestarting your process with the new `api_key` value."
+        }
+      ]
+    },
+    {
+      "id": "G6",
+      "question": "If I pass a malformed parameter, what does the SDK throw?",
+      "expected_chunk_id": "errors::structure::1",
+      "hit": true,
+      "hit_rank": 3,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0325,
+          "chunk_id": "authentication::structure::4",
+          "source_file": "authentication.md",
+          "page_id": "authentication",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Authentication > Rotating keys",
+          "text": "## Rotating keys\n\nIf a key is compromised, revoke it from the Acme dashboard and issue a new\none. The SDK does not cache keys to disk, so rotating a key only requires\nrestarting your process with the new `api_key` value."
+        },
+        {
+          "rank": 2,
+          "score": 0.0323,
+          "chunk_id": "requests::structure::0",
+          "source_file": "requests.md",
+          "page_id": "requests",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Requests",
+          "text": "# Requests\n\nEvery call made through `Client.send()` or `Client.stream()` is built into a\n`Request` under the hood. Most users never construct a `Request` directly,\nbut you can pass a `RequestOptions` object to customize low-level behavior."
+        },
+        {
+          "rank": 3,
+          "score": 0.0318,
+          "chunk_id": "errors::structure::1",
+          "source_file": "errors.md",
+          "page_id": "errors",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Errors > Exception table",
+          "text": "## Exception table\n\n| Exception | Raised when | Retryable |\n|---|---|---|\n| TimeoutError | `timeout_ms` is exceeded before the server replies | true |\n| RateLimitError | the account has exceeded its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` propagate to your code. `RateLimitError` and\n`TimeoutError` are both safe to retry. `AuthError` and `ValidationError` are\nnot retryable because retrying with the same bad input will always fail\nagain."
+        }
+      ]
+    },
+    {
+      "id": "G7",
+      "question": "Can I safely retry a send() call twice without it running twice server-side?",
+      "expected_chunk_id": "requests::structure::4",
+      "hit": true,
+      "hit_rank": 1,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0328,
+          "chunk_id": "requests::structure::4",
+          "source_file": "requests.md",
+          "page_id": "requests",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Requests > Idempotency",
+          "text": "## Idempotency\n\nPassing the same `X-Idempotency-Key` header on two calls to `Client.send()`\nguarantees the second call will not be processed twice, even if the first\nresponse was lost due to a network error."
+        },
+        {
+          "rank": 2,
+          "score": 0.0317,
+          "chunk_id": "client::structure::2",
+          "source_file": "client.md",
+          "page_id": "client",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Client > Client.send() > Parameters",
+          "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| retry_backoff_ms | integer | 1000 | false |\n| max_retries | integer | 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror."
+        },
+        {
+          "rank": 3,
+          "score": 0.0313,
+          "chunk_id": "errors::structure::1",
+          "source_file": "errors.md",
+          "page_id": "errors",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Errors > Exception table",
+          "text": "## Exception table\n\n| Exception | Raised when | Retryable |\n|---|---|---|\n| TimeoutError | `timeout_ms` is exceeded before the server replies | true |\n| RateLimitError | the account has exceeded its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` propagate to your code. `RateLimitError` and\n`TimeoutError` are both safe to retry. `AuthError` and `ValidationError` are\nnot retryable because retrying with the same bad input will always fail\nagain."
+        }
+      ]
+    },
+    {
+      "id": "G8",
+      "question": "Is body_encoding json or form by default in RequestOptions?",
+      "expected_chunk_id": "requests::structure::2",
+      "hit": true,
+      "hit_rank": 1,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0325,
+          "chunk_id": "requests::structure::2",
+          "source_file": "requests.md",
+          "page_id": "requests",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Requests > RequestOptions > Parameters",
+          "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| headers | dict | {} | false |\n| query_params | dict | {} | false |\n| body_encoding | string | \"json\" | false |\n\n`headers` lets you add or override HTTP headers for a single call.\n`query_params` adds query-string parameters to the request URL.\n`body_encoding` controls how the request body is serialized; the only other\nsupported value besides `\"json\"` is `\"form\"`."
+        },
+        {
+          "rank": 2,
+          "score": 0.032,
+          "chunk_id": "requests::structure::3",
+          "source_file": "requests.md",
+          "page_id": "requests",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Requests > RequestOptions > Example",
+          "text": "### Example\n\n```python\nfrom acme_sdk import Client, RequestOptions\n\nclient = Client(api_key=\"sk_live_example\")\n\noptions = RequestOptions(\n    headers={\"X-Trace-Id\": \"abc123\"},\n    body_encoding=\"json\",\n)\n\nresponse = client.send(message=\"hello\", options=options)\n```"
+        },
+        {
+          "rank": 3,
+          "score": 0.0315,
+          "chunk_id": "requests::structure::1",
+          "source_file": "requests.md",
+          "page_id": "requests",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Requests > RequestOptions",
+          "text": "## RequestOptions"
+        }
+      ]
+    },
+    {
+      "id": "G9",
+      "question": "How big is each chunk yielded by stream() unless I override it?",
+      "expected_chunk_id": "streaming::structure::2",
+      "hit": false,
+      "hit_rank": null,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0328,
+          "chunk_id": "streaming::structure::4",
+          "source_file": "streaming.md",
+          "page_id": "streaming",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Streaming > StreamChunk",
+          "text": "## StreamChunk\n\nEach `StreamChunk` yielded by `Client.stream()` has a `text` field holding\nthe partial text for that chunk, and a `is_final` boolean that is `true` on\nthe last chunk of the stream."
+        },
+        {
+          "rank": 2,
+          "score": 0.0323,
+          "chunk_id": "streaming::structure::3",
+          "source_file": "streaming.md",
+          "page_id": "streaming",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Streaming > Client.stream() > Example",
+          "text": "### Example\n\n```python\nclient = Client(api_key=\"sk_live_example\")\n\nfor chunk in client.stream(message=\"hello\"):\n    print(chunk.text, end=\"\")\n```"
+        },
+        {
+          "rank": 3,
+          "score": 0.0315,
+          "chunk_id": "requests::structure::2",
+          "source_file": "requests.md",
+          "page_id": "requests",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Requests > RequestOptions > Parameters",
+          "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| headers | dict | {} | false |\n| query_params | dict | {} | false |\n| body_encoding | string | \"json\" | false |\n\n`headers` lets you add or override HTTP headers for a single call.\n`query_params` adds query-string parameters to the request URL.\n`body_encoding` controls how the request body is serialized; the only other\nsupported value besides `\"json\"` is `\"form\"`."
+        }
+      ]
+    },
+    {
+      "id": "G10",
+      "question": "How do I know when a stream has finished sending chunks?",
+      "expected_chunk_id": "streaming::structure::4",
+      "hit": true,
+      "hit_rank": 1,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0328,
+          "chunk_id": "streaming::structure::4",
+          "source_file": "streaming.md",
+          "page_id": "streaming",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Streaming > StreamChunk",
+          "text": "## StreamChunk\n\nEach `StreamChunk` yielded by `Client.stream()` has a `text` field holding\nthe partial text for that chunk, and a `is_final` boolean that is `true` on\nthe last chunk of the stream."
+        },
+        {
+          "rank": 2,
+          "score": 0.0323,
+          "chunk_id": "streaming::structure::1",
+          "source_file": "streaming.md",
+          "page_id": "streaming",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Streaming > Client.stream()",
+          "text": "## Client.stream()\n\n`Client.stream()` sends a message the same way `Client.send()` does, but\ninstead of waiting for the full reply it returns an iterator that yields\n`StreamChunk` objects as they arrive from the server. Use it when you want to\nshow partial output to a user as soon as it is available, instead of\nblocking until the entire response is ready."
+        },
+        {
+          "rank": 3,
+          "score": 0.0301,
+          "chunk_id": "requests::structure::0",
+          "source_file": "requests.md",
+          "page_id": "requests",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Requests",
+          "text": "# Requests\n\nEvery call made through `Client.send()` or `Client.stream()` is built into a\n`Request` under the hood. Most users never construct a `Request` directly,\nbut you can pass a `RequestOptions` object to customize low-level behavior."
+        }
+      ]
+    },
+    {
+      "id": "G11",
+      "question": "If the response status code isn't 200 what does that mean for my request?",
+      "expected_chunk_id": "responses::structure::4",
+      "hit": true,
+      "hit_rank": 2,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0325,
+          "chunk_id": "responses::structure::3",
+          "source_file": "responses.md",
+          "page_id": "responses",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Responses > Response object > Example",
+          "text": "### Example\n\n```python\nresponse = client.send(message=\"hello\")\n\nif response.status_code == 200:\n    print(response.body)\n```"
+        },
+        {
+          "rank": 2,
+          "score": 0.0323,
+          "chunk_id": "responses::structure::4",
+          "source_file": "responses.md",
+          "page_id": "responses",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Responses > Checking for errors",
+          "text": "## Checking for errors\n\nA `status_code` of 200 means success. Any other status code means the call\ndid not succeed; see the Errors page for which exception the SDK raises for\neach case."
+        },
+        {
+          "rank": 3,
+          "score": 0.032,
+          "chunk_id": "responses::structure::0",
+          "source_file": "responses.md",
+          "page_id": "responses",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Responses",
+          "text": "# Responses\n\n`Client.send()` returns a `Response` object once the API has replied. The\n`Response` object gives you access to the status code, the parsed body, and\nany headers the server sent back."
+        }
+      ]
+    },
+    {
+      "id": "G12",
+      "question": "My API key got leaked, what steps do I take to rotate it?",
+      "expected_chunk_id": "authentication::structure::4",
+      "hit": true,
+      "hit_rank": 2,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.0325,
+          "chunk_id": "authentication::structure::0",
+          "source_file": "authentication.md",
+          "page_id": "authentication",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Authentication",
+          "text": "# Authentication\n\nThe Acme SDK authenticates using an API key. You configure authentication by\nconstructing a `Client` with an `AuthConfig`, or by passing `api_key`\ndirectly to `Client()`."
+        },
+        {
+          "rank": 2,
+          "score": 0.0325,
+          "chunk_id": "authentication::structure::4",
+          "source_file": "authentication.md",
+          "page_id": "authentication",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Authentication > Rotating keys",
+          "text": "## Rotating keys\n\nIf a key is compromised, revoke it from the Acme dashboard and issue a new\none. The SDK does not cache keys to disk, so rotating a key only requires\nrestarting your process with the new `api_key` value."
+        },
+        {
+          "rank": 3,
+          "score": 0.0315,
+          "chunk_id": "authentication::structure::2",
+          "source_file": "authentication.md",
+          "page_id": "authentication",
+          "sdk_version": "v3",
+          "page_type": "reference",
+          "anchor": "Authentication > AuthConfig > Parameters",
+          "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| api_key | string | \u2014 | true |\n| region | string | \"us\" | false |\n| token_refresh_ms | integer | 3600000 | false |\n\n`api_key` is the secret key issued from your Acme dashboard and is always\nrequired; the client will refuse to start without it. `region` selects which\nregional API endpoint to talk to. `token_refresh_ms` controls how often a\ntemporary session token is refreshed in the background."
+        }
+      ]
+    }
+  ]
+}

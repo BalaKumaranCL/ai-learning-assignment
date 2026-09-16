@@ -1,0 +1,347 @@
+{
+  "sample_seed": 502,
+  "sample_trace_ids": [
+    "trace-01035",
+    "trace-00744",
+    "trace-00345",
+    "trace-00720",
+    "trace-00347",
+    "trace-00873",
+    "trace-00083",
+    "trace-00776",
+    "trace-01036",
+    "trace-00159",
+    "trace-00505",
+    "trace-00653",
+    "trace-00403",
+    "trace-00221",
+    "trace-00658",
+    "trace-01102",
+    "trace-00478",
+    "trace-00504",
+    "trace-01173",
+    "trace-00131"
+  ],
+  "traces": [
+    {
+      "trace_id": "trace-01035",
+      "timestamp": "2026-09-15T15:28:33",
+      "day": 6,
+      "question": "default timeout_ms for send()",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document default timeout_ms for send().",
+      "retriever_version": "rrf_fusion_v1_k60",
+      "generator_version": "verbatim_cite_or_refuse_v2_rrf_confidence",
+      "min_score_threshold": 0.38,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "streaming::structure::2",
+          "score": 0.0328,
+          "sdk_version": "v3",
+          "source_file": "streaming.md"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "client::structure::3",
+          "score": 0.0323,
+          "sdk_version": "v3",
+          "source_file": "client.md"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "client::structure::2",
+          "score": 0.0317,
+          "sdk_version": "v3",
+          "source_file": "client.md"
+        }
+      ],
+      "cited_chunk_id": null,
+      "latency_ms": 4.4208
+    },
+    {
+      "trace_id": "trace-00744",
+      "timestamp": "2026-09-13T04:47:20",
+      "day": 4,
+      "question": "is api_key required for AuthConfig",
+      "sdk_version_filter": "v3",
+      "answered": true,
+      "raw_output": "## AuthConfig\n\n`AuthConfig` describes how the client should authenticate its requests."
+    },
+    {
+      "trace_id": "trace-00345",
+      "timestamp": "2026-09-11T13:37:05",
+      "day": 2,
+      "question": "default max_retries value",
+      "sdk_version_filter": null,
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document default max_retries value."
+    },
+    {
+      "trace_id": "trace-00720",
+      "timestamp": "2026-09-13T20:11:22",
+      "day": 4,
+      "question": "What are the default values of headers and query_params in RequestOptions?",
+      "sdk_version_filter": "v3",
+      "answered": true,
+      "raw_output": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| headers | dict | {} | false |\n| query_params | dict | {} | false |\n| body_encoding | string | \"json\" | false |\n\n`headers` lets you add or override HTTP headers for a single call.\n`query_params` adds query-string parameters to the request URL.\n`body_encoding` controls how the request body is serialized; the only other\nsupported value besides `\"json\"` is `\"form\"`."
+    },
+    {
+      "trace_id": "trace-00347",
+      "timestamp": "2026-09-11T08:42:25",
+      "day": 2,
+      "question": "what's the easiest way to authenticate a client",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document what's the easiest way to authenticate a client."
+    },
+    {
+      "trace_id": "trace-00873",
+      "timestamp": "2026-09-14T06:47:52",
+      "day": 5,
+      "question": "what's the easiest way to authenticate a client",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document what's the easiest way to authenticate a client.",
+      "retriever_version": "rrf_fusion_v1_k60",
+      "generator_version": "verbatim_cite_or_refuse_v2_rrf_confidence",
+      "min_score_threshold": 0.38,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "authentication::structure::1",
+          "score": 0.0328,
+          "sdk_version": "v3",
+          "source_file": "authentication.md"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "streaming::structure::1",
+          "score": 0.0323,
+          "sdk_version": "v3",
+          "source_file": "streaming.md"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "client::structure::0",
+          "score": 0.0313,
+          "sdk_version": "v3",
+          "source_file": "client.md"
+        }
+      ],
+      "cited_chunk_id": null,
+      "latency_ms": 4.3184
+    },
+    {
+      "trace_id": "trace-00083",
+      "timestamp": "2026-09-09T11:05:50",
+      "day": 0,
+      "question": "default body_encoding",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document default body_encoding."
+    },
+    {
+      "trace_id": "trace-00776",
+      "timestamp": "2026-09-13T11:18:45",
+      "day": 4,
+      "question": "How long does the client wait between retries by default?",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document How long does the client wait between retries by default."
+    },
+    {
+      "trace_id": "trace-01036",
+      "timestamp": "2026-09-15T17:10:56",
+      "day": 6,
+      "question": "how do i get streaming responses",
+      "sdk_version_filter": null,
+      "answered": true,
+      "raw_output": "# Streaming",
+      "retriever_version": "rrf_fusion_v1_k60",
+      "generator_version": "verbatim_cite_or_refuse_v2_rrf_confidence",
+      "min_score_threshold": 0.38,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "streaming::structure::0",
+          "score": 0.0328,
+          "sdk_version": "v3",
+          "source_file": "streaming.md"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "responses::structure::0",
+          "score": 0.0323,
+          "sdk_version": "v3",
+          "source_file": "responses.md"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "client::structure::1",
+          "score": 0.0313,
+          "sdk_version": "v3",
+          "source_file": "client.md"
+        }
+      ],
+      "cited_chunk_id": "streaming::structure::0",
+      "latency_ms": 4.5395
+    },
+    {
+      "trace_id": "trace-00159",
+      "timestamp": "2026-09-09T21:43:06",
+      "day": 0,
+      "question": "What parameter is required when creating an AuthConfig?",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document What parameter is required when creating an AuthConfig."
+    },
+    {
+      "trace_id": "trace-00505",
+      "timestamp": "2026-09-11T08:19:01",
+      "day": 2,
+      "question": "Which exception is raised when the api_key is missing or invalid?",
+      "sdk_version_filter": null,
+      "answered": true,
+      "raw_output": "## Exception table\n\n| Exception | Raised when | Retryable |\n|---|---|---|\n| TimeoutError | `timeout_ms` is exceeded before the server replies | true |\n| RateLimitError | the account has exceeded its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` propagate to your code. `RateLimitError` and\n`TimeoutError` are both safe to retry. `AuthError` and `ValidationError` are\nnot retryable because retrying with the same bad input will always fail\nagain."
+    },
+    {
+      "trace_id": "trace-00653",
+      "timestamp": "2026-09-12T14:45:43",
+      "day": 3,
+      "question": "How many concurrent requests does the SDK support?",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document How many concurrent requests does the SDK support."
+    },
+    {
+      "trace_id": "trace-00403",
+      "timestamp": "2026-09-11T14:28:51",
+      "day": 2,
+      "question": "What is the default value of max_retries in Client.send()?",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document What is the default value of max_retries in Client.send()."
+    },
+    {
+      "trace_id": "trace-00221",
+      "timestamp": "2026-09-10T07:13:27",
+      "day": 1,
+      "question": "when should I call close() on my client",
+      "sdk_version_filter": null,
+      "answered": true,
+      "raw_output": "## Client.close()\n\n`Client.close()` releases the underlying network connection pool. Call it\nwhen you are done using a client, for example at the end of a script or in a\n`finally` block. It takes no parameters and returns nothing."
+    },
+    {
+      "trace_id": "trace-00658",
+      "timestamp": "2026-09-12T16:17:52",
+      "day": 3,
+      "question": "default chunk_size value",
+      "sdk_version_filter": null,
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document default chunk_size value."
+    },
+    {
+      "trace_id": "trace-01102",
+      "timestamp": "2026-09-15T04:23:59",
+      "day": 6,
+      "question": "What does a status_code other than 200 mean on a Response?",
+      "sdk_version_filter": "v3",
+      "answered": true,
+      "raw_output": "### Example\n\n```python\nresponse = client.send(message=\"hello\")\n\nif response.status_code == 200:\n    print(response.body)\n```",
+      "retriever_version": "rrf_fusion_v1_k60",
+      "generator_version": "verbatim_cite_or_refuse_v2_rrf_confidence",
+      "min_score_threshold": 0.38,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "responses::structure::3",
+          "score": 0.0325,
+          "sdk_version": "v3",
+          "source_file": "responses.md"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "responses::structure::4",
+          "score": 0.0325,
+          "sdk_version": "v3",
+          "source_file": "responses.md"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "streaming::structure::1",
+          "score": 0.031,
+          "sdk_version": "v3",
+          "source_file": "streaming.md"
+        }
+      ],
+      "cited_chunk_id": "responses::structure::3",
+      "latency_ms": 4.3285
+    },
+    {
+      "trace_id": "trace-00478",
+      "timestamp": "2026-09-11T09:46:10",
+      "day": 2,
+      "question": "does idempotency key prevent duplicate requests",
+      "sdk_version_filter": "v3",
+      "answered": true,
+      "raw_output": "## Idempotency\n\nPassing the same `X-Idempotency-Key` header on two calls to `Client.send()`\nguarantees the second call will not be processed twice, even if the first\nresponse was lost due to a network error."
+    },
+    {
+      "trace_id": "trace-00504",
+      "timestamp": "2026-09-11T11:42:56",
+      "day": 2,
+      "question": "how often does the session token refresh by default",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document how often does the session token refresh by default."
+    },
+    {
+      "trace_id": "trace-01173",
+      "timestamp": "2026-09-15T18:40:14",
+      "day": 6,
+      "question": "What is the default value of timeout_ms in Client.send()?",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document What is the default value of timeout_ms in Client.send().",
+      "retriever_version": "rrf_fusion_v1_k60",
+      "generator_version": "verbatim_cite_or_refuse_v2_rrf_confidence",
+      "min_score_threshold": 0.38,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "client::structure::3",
+          "score": 0.0328,
+          "sdk_version": "v3",
+          "source_file": "client.md"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "streaming::structure::2",
+          "score": 0.0323,
+          "sdk_version": "v3",
+          "source_file": "streaming.md"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "client::structure::2",
+          "score": 0.0313,
+          "sdk_version": "v3",
+          "source_file": "client.md"
+        }
+      ],
+      "cited_chunk_id": null,
+      "latency_ms": 4.453
+    },
+    {
+      "trace_id": "trace-00131",
+      "timestamp": "2026-09-09T01:03:36",
+      "day": 0,
+      "question": "How long does the client wait between retries by default?",
+      "sdk_version_filter": "v3",
+      "answered": false,
+      "raw_output": "I can't answer that from the supplied documentation because the corpus does not document How long does the client wait between retries by default."
+    }
+  ]
+}

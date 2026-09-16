@@ -1,0 +1,25 @@
+DOCS ASSISTANT ANSWER JUDGE -- v1
+
+This project has no LLM anywhere (see src/generator.py, src/docs_assistant.py
+docstrings) -- everything runs locally with no API key. So "the judge" here
+is a small, explicit, deliberately naive heuristic that plays the role of
+"an LLM judge nobody has ever checked against a human" -- exactly the thing
+this week's exercise exists to validate, and find wanting.
+
+SINGLE BINARY CRITERION:
+Is this answer helpful? (Y/N)
+
+v1 RULE:
+- If the assistant refused to answer -> N.
+- If the assistant answered, and the answer text is more than 40 characters
+  long (i.e. it's not just a bare heading or a one-line stub) -> Y.
+- Otherwise -> N.
+
+This is intentionally shallow: it only checks whether SOMETHING substantial
+was returned, never whether that something is actually correct, actually
+answers the specific question asked, or comes from the right SDK version.
+A fluent, complete-looking, confidently WRONG answer (e.g. citing the
+legacy v2 default for a v3 question) passes this rule easily -- which is
+exactly the DevRel risk described in the Week 6 problem statement, and
+exactly the kind of blind spot this validation exercise is supposed to
+surface.

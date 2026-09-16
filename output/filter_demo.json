@@ -1,0 +1,118 @@
+{
+  "query": "What is the default value of retry_backoff_ms in Client.send?",
+  "unfiltered": [
+    {
+      "rank": 1,
+      "score": 0.5054,
+      "chunk_id": "client_v2::legacy::0",
+      "source_file": "client_v2_legacy.md",
+      "page_id": "client_v2",
+      "sdk_version": "v2",
+      "page_type": "reference",
+      "anchor": "Client.send() (v2) > retry_backoff_ms",
+      "text": "In the legacy v2 SDK, Client.send() accepts a retry_backoff_ms parameter. The default value of retry_backoff_ms in v2 is 500 milliseconds between retries."
+    },
+    {
+      "rank": 2,
+      "score": 0.3883,
+      "chunk_id": "client::structure::3",
+      "source_file": "client.md",
+      "page_id": "client",
+      "sdk_version": "v3",
+      "page_type": "reference",
+      "anchor": "Client > Client.send() > Example",
+      "text": "### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`."
+    },
+    {
+      "rank": 3,
+      "score": 0.1949,
+      "chunk_id": "client::structure::2",
+      "source_file": "client.md",
+      "page_id": "client",
+      "sdk_version": "v3",
+      "page_type": "reference",
+      "anchor": "Client > Client.send() > Parameters",
+      "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| retry_backoff_ms | integer | 1000 | false |\n| max_retries | integer | 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror."
+    },
+    {
+      "rank": 4,
+      "score": 0.1829,
+      "chunk_id": "client::structure::0",
+      "source_file": "client.md",
+      "page_id": "client",
+      "sdk_version": "v3",
+      "page_type": "reference",
+      "anchor": "Client",
+      "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API."
+    },
+    {
+      "rank": 5,
+      "score": 0.142,
+      "chunk_id": "client::structure::1",
+      "source_file": "client.md",
+      "page_id": "client",
+      "sdk_version": "v3",
+      "page_type": "reference",
+      "anchor": "Client > Client.send()",
+      "text": "## Client.send()\n\n`Client.send()` sends a single message to the Acme API and waits for a\nresponse. Use it for simple, non-streaming calls where you want the full\nreply before continuing."
+    }
+  ],
+  "filtered": [
+    {
+      "rank": 1,
+      "score": 0.3883,
+      "chunk_id": "client::structure::3",
+      "source_file": "client.md",
+      "page_id": "client",
+      "sdk_version": "v3",
+      "page_type": "reference",
+      "anchor": "Client > Client.send() > Example",
+      "text": "### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`."
+    },
+    {
+      "rank": 2,
+      "score": 0.1949,
+      "chunk_id": "client::structure::2",
+      "source_file": "client.md",
+      "page_id": "client",
+      "sdk_version": "v3",
+      "page_type": "reference",
+      "anchor": "Client > Client.send() > Parameters",
+      "text": "### Parameters\n\n| Name | Type | Default | Required |\n|---|---|---|---|\n| message | string | \u2014 | true |\n| timeout_ms | integer | 30000 | false |\n| retry_backoff_ms | integer | 1000 | false |\n| max_retries | integer | 3 | false |\n\n`message` is the text payload sent to the API. `timeout_ms` controls how long\nthe client waits before giving up on a single attempt. `retry_backoff_ms` is\nthe base delay used between retry attempts after a failed call.\n`max_retries` caps how many times the client will retry before raising an\nerror."
+    },
+    {
+      "rank": 3,
+      "score": 0.1829,
+      "chunk_id": "client::structure::0",
+      "source_file": "client.md",
+      "page_id": "client",
+      "sdk_version": "v3",
+      "page_type": "reference",
+      "anchor": "Client",
+      "text": "# Client\n\nThe `Client` is the main entry point for the Acme SDK. Every request to the\nAcme API is made through a `Client` instance. A client holds your\nauthentication credentials and default settings, and exposes methods such as\n`send()` and `stream()` for talking to the API."
+    },
+    {
+      "rank": 4,
+      "score": 0.142,
+      "chunk_id": "client::structure::1",
+      "source_file": "client.md",
+      "page_id": "client",
+      "sdk_version": "v3",
+      "page_type": "reference",
+      "anchor": "Client > Client.send()",
+      "text": "## Client.send()\n\n`Client.send()` sends a single message to the Acme API and waits for a\nresponse. Use it for simple, non-streaming calls where you want the full\nreply before continuing."
+    },
+    {
+      "rank": 5,
+      "score": 0.1391,
+      "chunk_id": "errors::structure::2",
+      "source_file": "errors.md",
+      "page_id": "errors",
+      "sdk_version": "v3",
+      "page_type": "reference",
+      "anchor": "Errors > Exception table > Example",
+      "text": "### Example\n\n```python\nfrom acme_sdk import Client, TimeoutError\n\nclient = Client(api_key=\"sk_live_example\")\n\ntry:\n    client.send(message=\"hello\", timeout_ms=100)\nexcept TimeoutError:\n    print(\"the request timed out\")\n```"
+    }
+  ],
+  "top1_changed": true
+}

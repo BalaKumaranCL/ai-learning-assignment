@@ -1,0 +1,88 @@
+{
+  "answered": [
+    {
+      "question": "What is the default value of retry_backoff_ms in Client.send()?",
+      "answered": true,
+      "answer": "### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`.",
+      "chunk_id": "client::structure::3",
+      "page": "client.md",
+      "anchor": "Client > Client.send() > Example",
+      "score": 0.4017274623306597,
+      "id": "Q1"
+    },
+    {
+      "question": "What value is passed for retry_backoff_ms in the Client.send() code example?",
+      "answered": true,
+      "answer": "### Example\n\n```python\nfrom acme_sdk import Client\n\nclient = Client(api_key=\"sk_live_example\")\n\nresponse = client.send(\n    message=\"hello\",\n    timeout_ms=5000,\n    retry_backoff_ms=2000,\n)\n\nprint(response.body)\n```\n\nIn this example the caller overrides both `timeout_ms` and\n`retry_backoff_ms`, passing `retry_backoff_ms=2000` instead of relying on the\ndefault of `1000`.",
+      "chunk_id": "client::structure::3",
+      "page": "client.md",
+      "anchor": "Client > Client.send() > Example",
+      "score": 0.40319356779687676,
+      "id": "Q3"
+    },
+    {
+      "question": "Which exception is raised when timeout_ms is exceeded?",
+      "answered": true,
+      "answer": "## Exception table\n\n| Exception | Raised when | Retryable |\n|---|---|---|\n| TimeoutError | `timeout_ms` is exceeded before the server replies | true |\n| RateLimitError | the account has exceeded its request quota | true |\n| AuthError | the `api_key` is missing or invalid | false |\n| ValidationError | a required parameter is missing or malformed | false |\n\n`TimeoutError` is raised by `Client.send()` when the configured\n`timeout_ms` elapses before a response is received; the client will\nautomatically retry using `retry_backoff_ms` up to `max_retries` times before\nletting the `TimeoutError` propagate to your code. `RateLimitError` and\n`TimeoutError` are both safe to retry. `AuthError` and `ValidationError` are\nnot retryable because retrying with the same bad input will always fail\nagain.",
+      "chunk_id": "errors::structure::1",
+      "page": "errors.md",
+      "anchor": "Errors > Exception table",
+      "score": 0.4065995977038939,
+      "id": "Q6"
+    }
+  ],
+  "refused": [
+    {
+      "question": "What is the rate limit for Client.send()?",
+      "answered": false,
+      "answer": "I can't answer that from the supplied documentation because the corpus does not document What is the rate limit for Client.send().",
+      "chunk_id": null,
+      "page": null,
+      "anchor": null,
+      "score": 0.3555600557725296,
+      "id": "U1"
+    },
+    {
+      "question": "How many concurrent requests does the SDK support?",
+      "answered": false,
+      "answer": "I can't answer that from the supplied documentation because the corpus does not document How many concurrent requests does the SDK support.",
+      "chunk_id": null,
+      "page": null,
+      "anchor": null,
+      "score": 0.23292616322652723,
+      "id": "U2"
+    },
+    {
+      "question": "What uptime SLA does the SDK guarantee?",
+      "answered": false,
+      "answer": "I can't answer that from the supplied documentation because the corpus does not document What uptime SLA does the SDK guarantee.",
+      "chunk_id": null,
+      "page": null,
+      "anchor": null,
+      "score": 0.22323890078262001,
+      "id": "U3"
+    }
+  ],
+  "bonus": {
+    "query": "How do you pass a custom retry_backoff_ms value when calling Client.send()?",
+    "current_answer": {
+      "question": "How do you pass a custom retry_backoff_ms value when calling Client.send()?",
+      "answered": false,
+      "answer": "I can't answer that from the supplied documentation because the corpus does not document How do you pass a custom retry_backoff_ms value when calling Client.send().",
+      "chunk_id": null,
+      "page": null,
+      "anchor": null,
+      "score": 0.2824081926755848
+    },
+    "structure_answer": {
+      "question": "How do you pass a custom retry_backoff_ms value when calling Client.send()?",
+      "answered": false,
+      "answer": "I can't answer that from the supplied documentation because the corpus does not document How do you pass a custom retry_backoff_ms value when calling Client.send().",
+      "chunk_id": null,
+      "page": null,
+      "anchor": null,
+      "score": 0.3118027824869854
+    },
+    "demonstrated": false
+  }
+}
