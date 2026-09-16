@@ -1,0 +1,38 @@
+DOCS ASSISTANT ANSWER JUDGE -- v2
+
+SINGLE BINARY CRITERION (unchanged from v1):
+Is this answer helpful? (Y/N)
+
+CHANGE FROM v1: two targeted rules added, each driven by ONE real
+disagreement between judge_v1 and the blind human labels (labels_25.json,
+committed before this file existed) -- not a wholesale re-tune against the
+full label set.
+
+Disagreement E21 ("what's the default retry_backoff_ms", no sdk_version_filter):
+  judge_v1 said Y (substantial text). Human said N: the answer confidently
+  states the LEGACY V2 default (500ms) for a question with no version
+  filter applied, which is exactly the "v2 endpoints keep getting
+  recommended to v3 users" risk from this week's problem statement.
+  Human was right; judge_v1 never checked which SDK version it was citing.
+
+Disagreement E16 ("What does a status_code other than 200 mean?"):
+  judge_v1 said Y (substantial text). Human said N: the cited text is a
+  CODE EXAMPLE showing `if status_code == 200`, which never actually
+  states what a non-200 code means -- real content, wrong content for this
+  question. Human was right; judge_v1 can't tell "long and on-topic
+  sounding" from "actually answers what was asked."
+
+v2 RULES (v1's two rules, plus these two, checked in order):
+1. If the assistant refused to answer -> N.                         (v1, unchanged)
+2. NEW: if a chunk was cited and its sdk_version does not match the
+   question's requested sdk_version_filter (when one was given) -> N.
+3. NEW: if the cited chunk's anchor ends in "> Example" (a code-example
+   section) and the question does NOT contain the word "example" -> N.
+4. If the answer text is more than 40 characters long -> Y.         (v1, unchanged)
+5. Otherwise -> N.
+
+WHAT THIS DOES NOT FIX (known, on purpose): the separate cluster where
+judge_v1 marks a CORRECT refusal "unhelpful" for a genuinely
+out-of-corpus question (E12, E23, E30, E31) is untouched by these two
+rules -- see prediction.txt, written before this file, for the explicit
+claim that this cluster would remain broken.
