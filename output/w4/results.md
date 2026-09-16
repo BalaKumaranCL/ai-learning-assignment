@@ -197,7 +197,7 @@ Of 12 questions, 2 were genuine R-failures (the correct chunk existed but never 
 
 | | Before (TF-IDF only) | After (BM25 + RRF fusion) |
 |---|---:|---:|
-| p50 latency | 1.334 ms | 1.544 ms |
+| p50 latency | 1.284 ms | 1.484 ms |
 
 The fused retriever always runs a full TF-IDF search AND a full BM25 search internally, then fuses both complete ranked lists — so it is structurally guaranteed to cost at least as much as the baseline alone, plus fusion overhead. That cost is stated here honestly rather than explained away.
 
@@ -218,7 +218,7 @@ Of the 2 original R-failures, BM25 + RRF fixed `G6` and left `G9` completely unt
 
 ## 8. Shipping decision
 
-**Ship BM25 + RRF fusion.** hit-rate@3 improved from 10/12 to 11/12, fixing 1 of 2 R-failures and promoting 2 G-failures to a clean rank-1, for a latency cost of 0.210 ms per query (p50 1.334 -> 1.544 ms). On a 12-question corpus at sub-millisecond scale, that cost is negligible next to the accuracy gain — this verdict should be re-checked against real corpus size and query volume before shipping to production.
+**Ship BM25 + RRF fusion.** hit-rate@3 improved from 10/12 to 11/12, fixing 1 of 2 R-failures and promoting 2 G-failures to a clean rank-1, for a latency cost of 0.200 ms per query (p50 1.284 -> 1.484 ms). On a 12-question corpus at sub-millisecond scale, that cost is negligible next to the accuracy gain — this verdict should be re-checked against real corpus size and query volume before shipping to production.
 
 ## 9. Code diff
 
