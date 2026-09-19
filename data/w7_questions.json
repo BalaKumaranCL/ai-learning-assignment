@@ -1,0 +1,94 @@
+{
+  "_comment": "10 migration questions raced by both the agent and the fixed workflow. 'target_name' is the exact endpoint/param name a caller would ask about (what a real tool-calling model would extract from the question); both systems are handed the SAME target_name/api_version so the race tests the LOOP vs FIXED-STEPS decision, not entity extraction. 'dependent' marks the >=3 required cases where step 2's argument depends on what check_deprecation (step 1) found -- the endpoint asked about is deprecated in v3, so the replacement has to be resolved before the schema lookup. 'expected_keywords' are case-insensitive substrings that must ALL appear in the final answer for a pass; every keyword traces back to one specific tool's output so scoring never depends on a judge's opinion.",
+  "questions": [
+    {
+      "id": "Q1",
+      "question": "What does AuthConfig take besides api_key, and what's the default region?",
+      "target_name": "AuthConfig",
+      "api_version": "v3",
+      "dependent": false,
+      "expected_keywords": ["region", "us"]
+    },
+    {
+      "id": "Q2",
+      "question": "What field on the Response object holds the parsed JSON body, and is it a required field?",
+      "target_name": "Response",
+      "api_version": "v3",
+      "dependent": false,
+      "expected_keywords": ["body", "dict", "required"]
+    },
+    {
+      "id": "Q3",
+      "question": "Which exceptions does the SDK raise, and which of them are safe to retry?",
+      "target_name": "Errors",
+      "api_version": "v3",
+      "dependent": false,
+      "expected_keywords": ["TimeoutError", "RateLimitError", "AuthError", "ValidationError"]
+    },
+    {
+      "id": "Q4",
+      "question": "What does chunk_size control on Client.stream(), and what's its default value?",
+      "target_name": "Client.stream",
+      "api_version": "v3",
+      "dependent": false,
+      "expected_keywords": ["chunk_size", "512"]
+    },
+    {
+      "id": "Q5",
+      "question": "What's the default timeout_ms for Client.send() in v3, and which exception fires if it's exceeded?",
+      "target_name": "Client.send",
+      "api_version": "v3",
+      "dependent": false,
+      "expected_keywords": ["30000", "TimeoutError"]
+    },
+    {
+      "id": "Q6",
+      "question": "Our v2 code calls client.sendMessage(message=\"hi\"). Is that still valid in v3? If not, what should we call instead, and what parameters does it take?",
+      "target_name": "Client.sendMessage",
+      "api_version": "v3",
+      "dependent": true,
+      "expected_keywords": ["Client.send", "message", "is deprecated"]
+    },
+    {
+      "id": "Q7",
+      "question": "Our v2 code calls client.pollStream(...) in a loop. What's the v3 replacement, and how do we know when the stream has finished?",
+      "target_name": "Client.pollStream",
+      "api_version": "v3",
+      "dependent": true,
+      "expected_keywords": ["Client.stream", "is_final", "is deprecated"]
+    },
+    {
+      "id": "Q8",
+      "question": "v2's AuthConfig used a token field. Is token still accepted in v3? If not, what's the new field called, and is it required?",
+      "target_name": "AuthConfig.token",
+      "api_version": "v3",
+      "dependent": true,
+      "expected_keywords": ["api_key", "required", "is deprecated"]
+    },
+    {
+      "id": "Q9",
+      "question": "We're passing custom_headers to RequestOptions from our v2 integration. What's the v3 equivalent parameter, and what type does it expect?",
+      "target_name": "RequestOptions.custom_headers",
+      "api_version": "v3",
+      "dependent": true,
+      "expected_keywords": ["headers", "dict", "is deprecated"]
+    },
+    {
+      "id": "Q10",
+      "question": "Is Client.close() deprecated in v3, or was it replaced by something else?",
+      "target_name": "Client.close",
+      "api_version": "v3",
+      "dependent": false,
+      "expected_keywords": ["is not deprecated", "connection pool"]
+    }
+  ],
+  "budget_demo_question": {
+    "id": "DEMO-THRASH",
+    "question": "Our integration behaves differently across regions and I can't tell which SDK call is responsible -- check everything related to region handling across the client, auth, and request docs and keep verifying until you are fully sure.",
+    "target_name": "region",
+    "api_version": "v3",
+    "dependent": false,
+    "simulate_thrash": true,
+    "expected_keywords": ["__unsatisfiable__"]
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "_comment": "Simulated OpenAPI-derived parameter schema for the Acme SDK, keyed by api_version then by endpoint/object name. Mirrors docs/*.md (v3) and legacy_v2.py (v2). Used only by get_openapi_spec -- deprecation status lives in changelog.json instead, so the two tools never answer the same question.",
+  "v2": {
+    "Client.send": {
+      "parameters": [
+        {"name": "message", "type": "string", "default": null, "required": true},
+        {"name": "timeout_ms", "type": "integer", "default": 20000, "required": false},
+        {"name": "retry_backoff_ms", "type": "integer", "default": 500, "required": false}
+      ]
+    },
+    "Client.sendMessage": {
+      "parameters": [
+        {"name": "message", "type": "string", "default": null, "required": true},
+        {"name": "timeout_ms", "type": "integer", "default": 20000, "required": false}
+      ]
+    },
+    "Client.pollStream": {
+      "parameters": [
+        {"name": "message", "type": "string", "default": null, "required": true},
+        {"name": "poll_interval_ms", "type": "integer", "default": 250, "required": false}
+      ]
+    },
+    "AuthConfig": {
+      "parameters": [
+        {"name": "token", "type": "string", "default": null, "required": true},
+        {"name": "region", "type": "string", "default": "us", "required": false}
+      ]
+    },
+    "RequestOptions": {
+      "parameters": [
+        {"name": "custom_headers", "type": "dict", "default": {}, "required": false},
+        {"name": "query_params", "type": "dict", "default": {}, "required": false}
+      ]
+    }
+  },
+  "v3": {
+    "Client.send": {
+      "parameters": [
+        {"name": "message", "type": "string", "default": null, "required": true},
+        {"name": "timeout_ms", "type": "integer", "default": 30000, "required": false},
+        {"name": "retry_backoff_ms", "type": "integer", "default": 1000, "required": false},
+        {"name": "max_retries", "type": "integer", "default": 3, "required": false}
+      ]
+    },
+    "Client.stream": {
+      "parameters": [
+        {"name": "message", "type": "string", "default": null, "required": true},
+        {"name": "timeout_ms", "type": "integer", "default": 30000, "required": false},
+        {"name": "chunk_size", "type": "integer", "default": 512, "required": false}
+      ]
+    },
+    "Client.close": {
+      "parameters": []
+    },
+    "AuthConfig": {
+      "parameters": [
+        {"name": "api_key", "type": "string", "default": null, "required": true},
+        {"name": "region", "type": "string", "default": "us", "required": false},
+        {"name": "token_refresh_ms", "type": "integer", "default": 3600000, "required": false}
+      ]
+    },
+    "RequestOptions": {
+      "parameters": [
+        {"name": "headers", "type": "dict", "default": {}, "required": false},
+        {"name": "query_params", "type": "dict", "default": {}, "required": false},
+        {"name": "body_encoding", "type": "string", "default": "json", "required": false}
+      ]
+    },
+    "Response": {
+      "parameters": [
+        {"name": "status_code", "type": "integer", "default": null, "required": true},
+        {"name": "body", "type": "dict", "default": null, "required": true},
+        {"name": "headers", "type": "dict", "default": {}, "required": false}
+      ]
+    }
+  }
+}

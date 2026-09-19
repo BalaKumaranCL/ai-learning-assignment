@@ -1,0 +1,11 @@
+id,dependent,agent_pass,agent_tool_calls,agent_tokens,agent_cost_usd,agent_latency_s,workflow_pass,workflow_tool_calls,workflow_tokens,workflow_cost_usd,workflow_latency_s
+Q1,False,True,2,464,0.000634,0.016,True,3,732,0.001459,0.031
+Q2,False,True,2,461,0.000606,0.032,True,3,763,0.001519,0.031
+Q3,False,True,3,1303,0.002354,0.031,True,3,845,0.001786,0.031
+Q4,False,True,2,473,0.000647,0.032,True,3,831,0.001692,0.031
+Q5,False,True,3,1665,0.002958,0.031,True,3,1084,0.002259,0.031
+Q6,True,True,1,298,0.00044,0.016,True,3,854,0.001682,0.031
+Q7,True,True,3,1384,0.002186,0.031,True,3,721,0.001396,0.032
+Q8,True,True,1,289,0.000439,0.015,True,3,904,0.001837,0.032
+Q9,True,True,1,305,0.000465,0.015,True,3,715,0.001372,0.031
+Q10,False,True,3,1031,0.001686,0.032,True,3,557,0.001095,0.031
