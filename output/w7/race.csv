@@ -1,0 +1,5 @@
+metric,agent,workflow
+pass_rate,1.00,1.00
+p50_latency_s,0.0310,0.0310
+total_tokens,7673,8006
+cost_per_question_usd,0.001241,0.001610

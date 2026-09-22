@@ -1,0 +1,33 @@
+{
+  "_comment": "Deprecation history for the Acme SDK. Used only by check_deprecation -- parameter schemas live in openapi_spec.json instead, so the two tools never answer the same question. 'lookup_key' is the exact top-level key in openapi_spec.json that documents the replacement (kept separate from the human-readable 'replacement' name so callers never have to parse dotted names).",
+  "deprecations": [
+    {
+      "name": "Client.sendMessage",
+      "deprecated_in": "v3",
+      "replacement": "Client.send",
+      "lookup_key": "Client.send",
+      "note": "Renamed for consistency with Client.stream(); same request shape, waits for the full reply."
+    },
+    {
+      "name": "Client.pollStream",
+      "deprecated_in": "v3",
+      "replacement": "Client.stream",
+      "lookup_key": "Client.stream",
+      "note": "The manual poll-in-a-loop pattern is replaced by a lazy iterator you can 'for' over directly."
+    },
+    {
+      "name": "AuthConfig.token",
+      "deprecated_in": "v3",
+      "replacement": "AuthConfig.api_key",
+      "lookup_key": "AuthConfig",
+      "note": "Renamed to match the 'API key' terminology used on the Acme dashboard; same required string field."
+    },
+    {
+      "name": "RequestOptions.custom_headers",
+      "deprecated_in": "v3",
+      "replacement": "RequestOptions.headers",
+      "lookup_key": "RequestOptions",
+      "note": "Renamed to sit alongside RequestOptions.query_params; same dict type and default."
+    }
+  ]
+}
