@@ -47,7 +47,7 @@ def _result(question_meta, answer, tool_calls, iterations, total_tokens, total_c
     }
 
 
-def run_agent(question_meta, budgets=None, sleep_per_lap_s=0.01):
+def run_agent(question_meta, budgets=None, sleep_per_lap_s=0.01, require_spec_after_deprecation=False):
     budgets = {**DEFAULT_BUDGETS, **(budgets or {})}
     start = time.monotonic()
 
@@ -65,7 +65,9 @@ def run_agent(question_meta, budgets=None, sleep_per_lap_s=0.01):
             log.append({"event": "budget_terminated", "budget": "max_wall_clock_s", "elapsed_s": round(elapsed, 4)})
             return _result(question_meta, None, tool_calls, lap - 1, total_tokens, total_cost, start, log, "max_wall_clock_s")
 
-        decision, output_text = plan_step(question_meta, gathered, called_tools, lap)
+        decision, output_text = plan_step(
+            question_meta, gathered, called_tools, lap, require_spec_after_deprecation=require_spec_after_deprecation
+        )
 
         input_text = _history_text(question_meta, transcript)
         in_tok = estimate_tokens(input_text)

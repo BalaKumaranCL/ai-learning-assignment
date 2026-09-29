@@ -177,3 +177,13 @@ def call_tool(name, arguments):
     if fn is None:
         raise ValueError(f"unknown tool {name!r}")
     return fn(**arguments)
+
+
+def is_known_name(name, api_version):
+    """True if `name` is a real endpoint/object key in the OpenAPI spec for
+    this version, or a real name in the deprecation changelog -- i.e. a
+    tool argument a careful caller could actually have gotten from the real
+    data, as opposed to a plausible-sounding invention. Used by Week 8's
+    trajectory eval to score argument validity (real endpoint vs. fluent
+    fiction) without duplicating the spec/changelog lookup tables."""
+    return name in _OPENAPI_SPEC.get(api_version, {}) or name in _CHANGELOG_BY_NAME

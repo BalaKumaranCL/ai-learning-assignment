@@ -1,0 +1,11 @@
+id,outcome_pass,trajectory_pass,observed_sequence,accepted_sequences,steps_taken,steps_needed,step_efficiency,total_tokens,total_cost_usd
+Q1,True,True,check_deprecation|get_openapi_spec,get_openapi_spec;check_deprecation|get_openapi_spec,2,1,2.00,464,0.000634
+Q2,True,True,check_deprecation|get_openapi_spec,get_openapi_spec;check_deprecation|get_openapi_spec,2,1,2.00,461,0.000606
+Q3,True,True,check_deprecation|get_openapi_spec|search_docs,search_docs;check_deprecation|get_openapi_spec|search_docs,3,1,3.00,1303,0.002354
+Q4,True,True,check_deprecation|get_openapi_spec,get_openapi_spec;check_deprecation|get_openapi_spec,2,1,2.00,473,0.000647
+Q5,True,True,check_deprecation|get_openapi_spec|search_docs,get_openapi_spec|search_docs;check_deprecation|get_openapi_spec|search_docs,3,2,1.50,1665,0.002958
+Q6,True,False,check_deprecation,check_deprecation|get_openapi_spec,1,2,0.50,298,0.00044
+Q7,True,True,check_deprecation|get_openapi_spec|search_docs,check_deprecation|search_docs;check_deprecation|get_openapi_spec|search_docs,3,2,1.50,1384,0.002186
+Q8,True,False,check_deprecation,check_deprecation|get_openapi_spec,1,2,0.50,289,0.000439
+Q9,True,False,check_deprecation,check_deprecation|get_openapi_spec,1,2,0.50,305,0.000465
+Q10,True,True,check_deprecation|get_openapi_spec|search_docs,check_deprecation|search_docs;check_deprecation|get_openapi_spec|search_docs,3,2,1.50,1031,0.001686

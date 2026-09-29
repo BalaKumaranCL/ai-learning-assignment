@@ -1,0 +1,53 @@
+{
+  "_comment": "Four deliberately-triggered stress cases, one per failure mode the docs describe (loops, wrong tool, made-up inputs, giving up quietly) that the 10 real w7_questions.json cases don't naturally exercise. Each uses the same simulate_* trigger pattern already established by w7_questions.json's budget_demo_question (simulate_thrash) -- a documented, deterministic stand-in for a real failure, not a rigged outcome. Combined with the 10 real cases (3 of which naturally hit 'premature_stop' -- see w8_trajectory_expectations.json Q6/Q8/Q9), these make up the full Week 8 'zoo' used for the per-mode taxonomy, the mitigation, and the regression check.",
+  "cases": [
+    {
+      "id": "ZOO-LOOP",
+      "question": "Our integration behaves differently across regions and I can't tell which SDK call is responsible -- check everything related to region handling across the client, auth, and request docs and keep verifying until you are fully sure.",
+      "target_name": "region",
+      "api_version": "v3",
+      "dependent": false,
+      "simulate_thrash": true,
+      "expected_keywords": ["__unsatisfiable__"],
+      "required_tools": ["search_docs"],
+      "failure_mode": "loop",
+      "why": "Same open-ended, no-stop-signal question as w7's budget demo: the planner re-queries search_docs with a new follow-up angle every lap and never emits a final answer, so only max_iterations stops it."
+    },
+    {
+      "id": "ZOO-WRONGTOOL",
+      "question": "Our v2 code uses AuthConfig(token=...). Is token still valid in v3?",
+      "target_name": "AuthConfig.token",
+      "api_version": "v3",
+      "dependent": true,
+      "simulate_wrong_tool": true,
+      "expected_keywords": ["is deprecated", "api_key"],
+      "required_tools": ["check_deprecation"],
+      "failure_mode": "wrong_tool",
+      "why": "'is deprecated' only ever comes from check_deprecation -- it appears nowhere in docs/*.md (grep-verified). simulate_wrong_tool calls only search_docs, so this fails both outcome and trajectory: the one tool that could answer it is never called."
+    },
+    {
+      "id": "ZOO-HALLUC",
+      "question": "What's the default timeout_ms for Client.send() in v3?",
+      "target_name": "Client.send",
+      "api_version": "v3",
+      "dependent": false,
+      "simulate_hallucinated_arg": true,
+      "expected_keywords": ["30000"],
+      "required_tools": ["get_openapi_spec"],
+      "failure_mode": "hallucinated_argument",
+      "why": "simulate_hallucinated_arg calls get_openapi_spec with 'Client.sendAsync' -- a plausible-sounding endpoint name that does not exist in data/openapi_spec.json (agent_tools.is_known_name returns False) -- instead of the real target_name 'Client.send'."
+    },
+    {
+      "id": "ZOO-GIVEUP",
+      "question": "What does chunk_size control on Client.stream(), and what's its default value?",
+      "target_name": "Client.stream",
+      "api_version": "v3",
+      "dependent": false,
+      "simulate_silent_giveup": true,
+      "expected_keywords": ["chunk_size", "512"],
+      "required_tools": ["get_openapi_spec"],
+      "failure_mode": "silent_giveup",
+      "why": "simulate_silent_giveup answers immediately with a hedge and zero tool calls -- no error, no explanation of what it tried, just a quiet non-answer."
+    }
+  ]
+}

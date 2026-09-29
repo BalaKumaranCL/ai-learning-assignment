@@ -1,0 +1,6 @@
+top failure mode: premature_stop
+count before -> after: 3 -> 0
+total tokens (10 q) before -> after: 7673 -> 8654 (+981)
+total cost (10 q) before -> after: $0.012415 -> $0.013734 (+$0.001319)
+cost per question, mean, before -> after: $0.001241 -> $0.001373
+outcome_vs_trajectory_gap before -> after: 0.30 -> 0.00

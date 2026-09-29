@@ -1,0 +1,8 @@
+mode,count
+loop,1
+wrong_tool,1
+hallucinated_argument,1
+silent_giveup,1
+premature_stop,0
+clean,10
+other_fail,0

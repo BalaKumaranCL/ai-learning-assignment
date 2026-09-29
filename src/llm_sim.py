@@ -99,7 +99,7 @@ def _next_tool_args(tool_name, question_meta, gathered):
     raise ValueError(f"unknown tool {tool_name!r}")
 
 
-def plan_step(question_meta, gathered, called_tools, lap_number):
+def plan_step(question_meta, gathered, called_tools, lap_number, require_spec_after_deprecation=False):
     """One lap of the simulated model's reasoning: think, then either call
     the next tool or answer. Returns (decision, output_text) where
     output_text is what would be the model's completion text for this lap
@@ -109,6 +109,36 @@ def plan_step(question_meta, gathered, called_tools, lap_number):
     a vague, open-ended question with no clear "I'm done" signal, so the
     planner keeps re-querying search_docs with a new follow-up angle every
     lap instead of ever emitting a final answer -- only a budget stops it.
+
+    Week 8 adds three more deliberately-triggered failure modes, each gated
+    behind its own question_meta flag so the default (unflagged) path -- the
+    one every Week 7 question and every real question still takes -- is
+    untouched:
+
+    - simulate_wrong_tool: calls search_docs (never the tool that actually
+      carries the answer) exactly once, then answers anyway from whatever
+      irrelevant passage came back. Models a tool-calling model picking the
+      plausible-sounding tool over the correct one.
+    - simulate_hallucinated_arg: calls get_openapi_spec with a fabricated,
+      plausible-looking endpoint name (never the real target_name) instead
+      of the one the question is actually about. Models "fluent fiction" in
+      a tool argument.
+    - simulate_silent_giveup: answers immediately with a hedge, no tool
+      calls at all. Models an agent that gives up without telling anyone
+      why.
+
+    require_spec_after_deprecation is the Week 8 mitigation for a fourth,
+    naturally-occurring mode (not a simulate_* flag -- it happens on real
+    Week 7 questions): the naive `satisfied` check below is a substring
+    test against the composed draft, and for Client.sendMessage /
+    AuthConfig.token / RequestOptions.custom_headers the deprecation note's
+    own prose happens to already contain every expected keyword (e.g.
+    "message" is a substring of "sendMessage"), so the planner stops right
+    after check_deprecation and never calls get_openapi_spec to actually
+    confirm the current parameter schema -- a right-answer-wrong-path bug,
+    not a rigged one; see trajectory_eval.py. Default False reproduces
+    Week 7's exact, already-graded behavior; run_agent/trajectory_eval.py
+    pass True to apply the fix and measure the before/after delta.
     """
 
     if question_meta.get("simulate_thrash"):
@@ -116,8 +146,37 @@ def plan_step(question_meta, gathered, called_tools, lap_number):
         args = {"query": query, "sdk_version": question_meta["api_version"]}
         return {"type": "tool_call", "tool": "search_docs", "arguments": args}, f"CALL search_docs({args})"
 
+    if question_meta.get("simulate_wrong_tool"):
+        if "search_docs" not in called_tools:
+            args = {"query": question_meta["question"], "sdk_version": question_meta["api_version"]}
+            return {"type": "tool_call", "tool": "search_docs", "arguments": args}, f"CALL search_docs({args})"
+        draft = compose_answer(question_meta, gathered)
+        return {"type": "final_answer", "answer": draft}, f"FINAL ANSWER: {draft}"
+
+    if question_meta.get("simulate_hallucinated_arg"):
+        if not called_tools:
+            fake_endpoint = question_meta["target_name"] + "Async"  # plausible, never real
+            args = {"endpoint": fake_endpoint, "api_version": question_meta["api_version"]}
+            return {"type": "tool_call", "tool": "get_openapi_spec", "arguments": args}, f"CALL get_openapi_spec({args})"
+        draft = compose_answer(question_meta, gathered)
+        return {"type": "final_answer", "answer": draft}, f"FINAL ANSWER: {draft}"
+
+    if question_meta.get("simulate_silent_giveup"):
+        hedge = "I don't have enough information on file to answer this confidently."
+        return {"type": "final_answer", "answer": hedge}, f"FINAL ANSWER: {hedge}"
+
     draft = compose_answer(question_meta, gathered)
     satisfied = all(kw.lower() in draft.lower() for kw in question_meta["expected_keywords"])
+
+    dep = gathered.get("deprecation")
+    if (
+        require_spec_after_deprecation
+        and dep is not None
+        and dep["deprecated"]
+        and "get_openapi_spec" not in called_tools
+    ):
+        satisfied = False  # a deprecation note is not an authoritative parameter schema
+
     remaining = [t for t in TOOL_PRIORITY if t not in called_tools]
 
     if satisfied or not remaining:

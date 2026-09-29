@@ -1,0 +1,82 @@
+{
+  "_comment": "Expected tool trajectories for the 10 w7_questions.json docs cases (same questions, same target_name/api_version/expected_keywords -- Week 8 scores the PATH those questions' answers already took, it does not re-author the questions). Keyed by question id. 'required_tools' is the minimum set of tools whose data is actually load-bearing for that question's expected_keywords (verified against data/openapi_spec.json, data/changelog.json, and docs/*.md -- not guessed). 'accepted_sequences' is the SET of exact tool-name orderings trajectory_eval.py will accept as correct; more than one entry means that case legitimately has more than one valid path -- see 'why' for which and why. steps_needed = len(required_tools), used for the step-efficiency ratio.",
+  "cases": {
+    "Q1": {
+      "required_tools": ["get_openapi_spec"],
+      "accepted_sequences": [
+        ["get_openapi_spec"],
+        ["check_deprecation", "get_openapi_spec"]
+      ],
+      "why": "AuthConfig's other v3 fields and the region default are spec facts, not deprecation facts -- get_openapi_spec alone answers it. A leading check_deprecation is a legitimate, harmless defensive habit (it costs a step but never changes the answer), so both orderings are accepted; anything that never calls get_openapi_spec is not."
+    },
+    "Q2": {
+      "required_tools": ["get_openapi_spec"],
+      "accepted_sequences": [
+        ["get_openapi_spec"],
+        ["check_deprecation", "get_openapi_spec"]
+      ],
+      "why": "Same shape as Q1: Response.body's type and required-ness are spec facts only."
+    },
+    "Q3": {
+      "required_tools": ["search_docs"],
+      "accepted_sequences": [
+        ["search_docs"],
+        ["check_deprecation", "get_openapi_spec", "search_docs"]
+      ],
+      "why": "The exception table (docs/errors.md) is prose-only -- 'Errors' is not a real spec or changelog key, so check_deprecation/get_openapi_spec legitimately come back empty without corrupting the answer. Accepted either way; only a sequence that never reaches search_docs is wrong."
+    },
+    "Q4": {
+      "required_tools": ["get_openapi_spec"],
+      "accepted_sequences": [
+        ["get_openapi_spec"],
+        ["check_deprecation", "get_openapi_spec"]
+      ],
+      "why": "Client.stream's chunk_size default is a spec fact."
+    },
+    "Q5": {
+      "required_tools": ["get_openapi_spec", "search_docs"],
+      "accepted_sequences": [
+        ["get_openapi_spec", "search_docs"],
+        ["check_deprecation", "get_openapi_spec", "search_docs"]
+      ],
+      "why": "timeout_ms's default is a spec fact; which exception fires on timeout is documented only in docs/errors.md, not the spec -- both tools are load-bearing."
+    },
+    "Q6": {
+      "required_tools": ["check_deprecation", "get_openapi_spec"],
+      "accepted_sequences": [
+        ["check_deprecation", "get_openapi_spec"]
+      ],
+      "why": "RIGHT-ANSWER-WRONG-PATH CASE. The question asks what parameters Client.send takes. check_deprecation's replacement note happens to satisfy the crude keyword check ('message' is a substring of 'sendMessage', 'Client.send' is quoted verbatim as the replacement) without ever calling get_openapi_spec -- so the pre-mitigation agent stops after 1 call with an answer that never actually confirms the current parameter schema. Only one sequence is accepted here on purpose: a stop before get_openapi_spec is exactly the bug, not a legitimate alternate."
+    },
+    "Q7": {
+      "required_tools": ["check_deprecation", "search_docs"],
+      "accepted_sequences": [
+        ["check_deprecation", "search_docs"],
+        ["check_deprecation", "get_openapi_spec", "search_docs"]
+      ],
+      "why": "check_deprecation resolves the v3 replacement name; is_final is documented only in docs/streaming.md, not in Client.stream's parameter list (it's a per-chunk response field, not a call argument), so get_openapi_spec can't supply it -- calling it anyway is harmless, not wrong."
+    },
+    "Q8": {
+      "required_tools": ["check_deprecation", "get_openapi_spec"],
+      "accepted_sequences": [
+        ["check_deprecation", "get_openapi_spec"]
+      ],
+      "why": "RIGHT-ANSWER-WRONG-PATH CASE, same bug as Q6: the deprecation note's prose ('same required string field') happens to satisfy the 'required' keyword, so the pre-mitigation agent never calls get_openapi_spec to actually confirm api_key is required in the v3 schema."
+    },
+    "Q9": {
+      "required_tools": ["check_deprecation", "get_openapi_spec"],
+      "accepted_sequences": [
+        ["check_deprecation", "get_openapi_spec"]
+      ],
+      "why": "RIGHT-ANSWER-WRONG-PATH CASE, same bug: the deprecation note ('same dict type and default') happens to satisfy the 'dict' keyword, so the pre-mitigation agent never confirms the type via get_openapi_spec."
+    },
+    "Q10": {
+      "required_tools": ["check_deprecation", "search_docs"],
+      "accepted_sequences": [
+        ["check_deprecation", "search_docs"],
+        ["check_deprecation", "get_openapi_spec", "search_docs"]
+      ],
+      "why": "check_deprecation supplies 'is not deprecated'; the connection-pool explanation is prose-only (docs/client.md), not in the spec (Client.close takes no parameters) -- get_openapi_spec is a harmless, not-wrong extra."
+    }
+  }
+}
