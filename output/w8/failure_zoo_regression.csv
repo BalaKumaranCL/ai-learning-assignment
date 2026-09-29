@@ -1,0 +1,8 @@
+mode,before,after,direction
+loop,1,1,unchanged
+wrong_tool,1,1,unchanged
+hallucinated_argument,1,1,unchanged
+silent_giveup,1,1,unchanged
+premature_stop,3,0,better
+clean,7,10,n/a
+other_fail,0,0,unchanged

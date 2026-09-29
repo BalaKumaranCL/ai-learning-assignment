@@ -1,0 +1,9 @@
+metric,value
+outcome_pass_rate,1.00
+trajectory_pass_rate,1.00
+outcome_vs_trajectory_gap,0.00
+tool_choice_accuracy,1.0000
+argument_validity_rate,1.0000
+step_efficiency_mean,1.6500
+cost_p50_usd,0.000904
+cost_max_usd,0.002958
