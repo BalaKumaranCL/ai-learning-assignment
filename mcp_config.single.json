@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "docs-search": {
+      "command": "python",
+      "args": ["mcp_servers/docs_search_server.py"]
+    }
+  }
+}

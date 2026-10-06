@@ -1,0 +1,7 @@
+2026-10-06T08:00:27+00:00 caller=docs-assistant-readonly tool=get_package_version package@version=acme-sdk@3.1.0 decision=ALLOW
+2026-10-06T08:00:27+00:00 caller=docs-assistant-readonly tool=get_deprecation_notice package@version=acme-sdk@2.9.1 decision=DENY reason=SCOPE_DENIED
+2026-10-06T08:00:27+00:00 caller=docs-assistant-readonly tool=get_package_version package@version=acme-sdk@2.9.1 decision=ALLOW
+2026-10-06T08:00:31+00:00 caller=docs-assistant-full tool=get_package_version package@version=acme-sdk@3.1.0 decision=ALLOW
+2026-10-06T08:00:31+00:00 caller=docs-assistant-full tool=get_deprecation_notice package@version=acme-sdk@2.9.1 decision=ALLOW
+2026-10-06T08:00:58+00:00 caller=docs-assistant-readonly tool=get_deprecation_notice package@version=acme-sdk@2.9.1 decision=DENY reason=SCOPE_DENIED
+2026-10-06T08:00:58+00:00 caller=docs-assistant-readonly tool=get_package_version package@version=acme-sdk@2.9.1 decision=ALLOW

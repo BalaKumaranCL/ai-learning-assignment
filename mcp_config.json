@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "docs-search": {
+      "command": "python",
+      "args": ["mcp_servers/docs_search_server.py"]
+    },
+    "package-registry": {
+      "command": "python",
+      "args": ["third_party/package_registry/server.py"],
+      "env": {
+        "REGISTRY_API_TOKEN": "demo-registry-token-0001",
+        "REGISTRY_LOG_PATH": "output/w9/registry_access.log"
+      }
+    }
+  }
+}

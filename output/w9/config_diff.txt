@@ -1,0 +1,19 @@
+diff --git a/mcp_config.single.json b/mcp_config.json
+index 68b6387..3a082a6 100644
+--- a/mcp_config.single.json
++++ b/mcp_config.json
+@@ -3,6 +3,14 @@
+     "docs-search": {
+       "command": "python",
+       "args": ["mcp_servers/docs_search_server.py"]
++    },
++    "package-registry": {
++      "command": "python",
++      "args": ["third_party/package_registry/server.py"],
++      "env": {
++        "REGISTRY_API_TOKEN": "demo-registry-token-0001",
++        "REGISTRY_LOG_PATH": "output/w9/registry_access.log"
++      }
+     }
+   }
+ }

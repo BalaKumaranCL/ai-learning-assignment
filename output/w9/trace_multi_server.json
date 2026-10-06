@@ -1,0 +1,49 @@
+{
+  "discovery": {
+    "docs-search": [
+      "search_docs",
+      "get_openapi_spec"
+    ],
+    "package-registry": [
+      "list_package_versions",
+      "get_package_version",
+      "get_deprecation_notice"
+    ]
+  },
+  "traces": [
+    {
+      "question": "Is acme-sdk 2.9.1 deprecated?",
+      "steps": [
+        {
+          "lap": 1,
+          "server": "package-registry",
+          "tool": "get_deprecation_notice",
+          "arguments": {
+            "package": "acme-sdk",
+            "version": "2.9.1"
+          },
+          "is_error": false,
+          "result_text": "acme-sdk 2.9.1 is DEPRECATED since 2025-01-20: 2.x is end-of-life. Client.sendMessage, Client.pollStream, AuthConfig.token and RequestOptions.custom_headers were renamed in 3.0.0; upgrade to 3.x. Upgrade to 3.2.0."
+        }
+      ],
+      "answer": "acme-sdk 2.9.1 is DEPRECATED since 2025-01-20: 2.x is end-of-life. Client.sendMessage, Client.pollStream, AuthConfig.token and RequestOptions.custom_headers were renamed in 3.0.0; upgrade to 3.x. Upgrade to 3.2.0."
+    },
+    {
+      "question": "What does Client.send take in v3?",
+      "steps": [
+        {
+          "lap": 1,
+          "server": "docs-search",
+          "tool": "get_openapi_spec",
+          "arguments": {
+            "endpoint": "Client.send",
+            "api_version": "v3"
+          },
+          "is_error": false,
+          "result_text": "Client.send in v3 takes: message (string, required), timeout_ms (integer, default=30000), retry_backoff_ms (integer, default=1000), max_retries (integer, default=3)."
+        }
+      ],
+      "answer": "Client.send in v3 takes: message (string, required), timeout_ms (integer, default=30000), retry_backoff_ms (integer, default=1000), max_retries (integer, default=3)."
+    }
+  ]
+}

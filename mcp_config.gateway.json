@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "gateway": {
+      "command": "python",
+      "args": [
+        "src/mcp_gateway.py",
+        "--downstream", "mcp_config.json",
+        "--tokens", "gateway_tokens.json",
+        "--audit-log", "output/w9/gateway_audit.log"
+      ],
+      "env": {
+        "MCP_GATEWAY_TOKEN": "tok-docs-assistant-readonly"
+      }
+    }
+  }
+}
