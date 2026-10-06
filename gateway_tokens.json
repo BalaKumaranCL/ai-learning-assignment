@@ -1,0 +1,14 @@
+{
+  "_comment": "Demo tokens for the Week 9 gateway bonus (fake values). 'denied_tools' are refused with a recoverable SCOPE_DENIED message; 'alternatives' names the tool the model should fall back to.",
+  "tokens": {
+    "tok-docs-assistant-readonly": {
+      "caller": "docs-assistant-readonly",
+      "denied_tools": ["get_deprecation_notice"],
+      "alternatives": {"get_deprecation_notice": "get_package_version"}
+    },
+    "tok-docs-assistant-full": {
+      "caller": "docs-assistant-full",
+      "denied_tools": []
+    }
+  }
+}

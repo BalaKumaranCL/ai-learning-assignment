@@ -1,0 +1,29 @@
+{
+  "source": "live tools/list responses captured by src/mcp_agent.py McpHost.connect (not typed notes)",
+  "before": {
+    "config": "mcp_config.single.json",
+    "count": 2,
+    "by_server": {
+      "docs-search": [
+        "search_docs",
+        "get_openapi_spec"
+      ]
+    }
+  },
+  "after": {
+    "config": "mcp_config.json",
+    "count": 5,
+    "by_server": {
+      "docs-search": [
+        "search_docs",
+        "get_openapi_spec"
+      ],
+      "package-registry": [
+        "list_package_versions",
+        "get_package_version",
+        "get_deprecation_notice"
+      ]
+    }
+  },
+  "summary": "2 tools before -> 5 tools after"
+}

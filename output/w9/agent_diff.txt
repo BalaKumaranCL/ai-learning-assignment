@@ -1,0 +1,8 @@
+# git diff of the agent module: BEFORE the single-server run vs AFTER the single+package-registry run
+# files compared: src/mcp_agent.py, src/mcp_llm_sim.py
+# command: git diff --no-index <snapshot-before> <snapshot-after>
+# sha256[:16] src/mcp_agent.py: before=071bed664275d115 after=071bed664275d115
+# sha256[:16] src/mcp_llm_sim.py: before=0a1653658e7093fe after=0a1653658e7093fe
+(git diff output: empty)
+
+agent module lines changed: 0
