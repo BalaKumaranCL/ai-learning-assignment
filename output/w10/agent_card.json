@@ -1,0 +1,68 @@
+{
+  "name": "docs-migration-squad",
+  "description": "Answers Acme SDK migration questions: whether an endpoint/parameter is deprecated in a given SDK version, its replacement, and the current parameters with a usage example.",
+  "supportedInterfaces": [
+    {
+      "url": "https://docs-squad.example.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "DevRel (example)",
+    "url": "https://example.com/devrel"
+  },
+  "version": "0.1.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "extendedAgentCard": false
+  },
+  "securitySchemes": {
+    "bearer": {
+      "type": "http",
+      "scheme": "bearer"
+    }
+  },
+  "securityRequirements": [
+    {
+      "bearer": []
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "deprecation-check",
+      "name": "Version / deprecation check",
+      "description": "Is a named endpoint, method or parameter deprecated at SDK vN, and what replaces it.",
+      "tags": [
+        "sdk",
+        "deprecation",
+        "migration"
+      ],
+      "examples": [
+        "Is Client.sendMessage still valid in v3?"
+      ]
+    },
+    {
+      "id": "code-sample",
+      "name": "Parameters and code sample",
+      "description": "Current parameter schema and a usage example for a named endpoint at a given SDK version.",
+      "tags": [
+        "sdk",
+        "parameters",
+        "code"
+      ],
+      "examples": [
+        "What does Client.send take in v3?"
+      ]
+    }
+  ],
+  "_note": "Illustrative, not deployed (the URL is a placeholder). Field names follow the A2A spec's AgentCard definition (supportedInterfaces / securityRequirements are the v1.0 names; earlier drafts used `url` and `security`). The securitySchemes entry uses OpenAPI-style shape -- check it against the spec revision you target."
+}

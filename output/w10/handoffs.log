@@ -1,0 +1,143 @@
+# handoffs.log -- multi arm, flag=False. Token counts use llm_sim.estimate_tokens (chars/4).
+# LLM     = one model call: input tokens (prompt + everything resent) and output tokens
+# HANDOFF = one message crossing an agent boundary: payload tokens
+
+Q1   LLM     orchestrator       in=76    out=30   total=106   bucket="orchestrator: decompose (question in)"
+Q1   HANDOFF orchestrator -> version-worker       payload_tokens=12
+Q1   LLM     version-worker     in=55    out=17   total=72    bucket="orchestrator -> version worker (delegation + worker calls)"
+Q1   LLM     version-worker     in=93    out=11   total=104   bucket="orchestrator -> version worker (delegation + worker calls)"
+Q1   HANDOFF version-worker -> orchestrator         payload_tokens=9
+Q1   LLM     orchestrator       in=125   out=38   total=163   bucket="orchestrator: re-plan after version report (resend of question + report)"
+Q1   HANDOFF orchestrator -> code-sample-worker   payload_tokens=30
+Q1   LLM     code-sample-worker in=83    out=18   total=101   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q1   LLM     code-sample-worker in=187   out=47   total=234   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q1   HANDOFF code-sample-worker -> orchestrator         payload_tokens=44
+Q1   LLM     orchestrator       in=213   out=47   total=260   bucket="orchestrator: synthesis (resend of both worker reports)"
+Q1   TOTAL   model_calls=7 hops=4 tokens=1040
+
+Q2   LLM     orchestrator       in=80    out=30   total=110   bucket="orchestrator: decompose (question in)"
+Q2   HANDOFF orchestrator -> version-worker       payload_tokens=12
+Q2   LLM     version-worker     in=55    out=16   total=71    bucket="orchestrator -> version worker (delegation + worker calls)"
+Q2   LLM     version-worker     in=92    out=10   total=102   bucket="orchestrator -> version worker (delegation + worker calls)"
+Q2   HANDOFF version-worker -> orchestrator         payload_tokens=8
+Q2   LLM     orchestrator       in=128   out=36   total=164   bucket="orchestrator: re-plan after version report (resend of question + report)"
+Q2   HANDOFF orchestrator -> code-sample-worker   payload_tokens=29
+Q2   LLM     code-sample-worker in=82    out=17   total=99    bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q2   LLM     code-sample-worker in=181   out=41   total=222   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q2   HANDOFF code-sample-worker -> orchestrator         payload_tokens=38
+Q2   LLM     orchestrator       in=209   out=41   total=250   bucket="orchestrator: synthesis (resend of both worker reports)"
+Q2   TOTAL   model_calls=7 hops=4 tokens=1018
+
+Q3   LLM     orchestrator       in=76    out=30   total=106   bucket="orchestrator: decompose (question in)"
+Q3   HANDOFF orchestrator -> version-worker       payload_tokens=11
+Q3   LLM     version-worker     in=54    out=16   total=70    bucket="orchestrator -> version worker (delegation + worker calls)"
+Q3   LLM     version-worker     in=91    out=10   total=101   bucket="orchestrator -> version worker (delegation + worker calls)"
+Q3   HANDOFF version-worker -> orchestrator         payload_tokens=8
+Q3   LLM     orchestrator       in=123   out=36   total=159   bucket="orchestrator: re-plan after version report (resend of question + report)"
+Q3   HANDOFF orchestrator -> code-sample-worker   payload_tokens=28
+Q3   LLM     code-sample-worker in=81    out=16   total=97    bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q3   LLM     code-sample-worker in=125   out=31   total=156   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q3   LLM     code-sample-worker in=547   out=347  total=894   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q3   HANDOFF code-sample-worker -> orchestrator         payload_tokens=344
+Q3   LLM     orchestrator       in=510   out=347  total=857   bucket="orchestrator: synthesis (resend of both worker reports)"
+Q3   TOTAL   model_calls=8 hops=4 tokens=2440
+
+Q4   LLM     orchestrator       in=78    out=31   total=109   bucket="orchestrator: decompose (question in)"
+Q4   HANDOFF orchestrator -> version-worker       payload_tokens=13
+Q4   LLM     version-worker     in=56    out=18   total=74    bucket="orchestrator -> version worker (delegation + worker calls)"
+Q4   LLM     version-worker     in=95    out=12   total=107   bucket="orchestrator -> version worker (delegation + worker calls)"
+Q4   HANDOFF version-worker -> orchestrator         payload_tokens=10
+Q4   LLM     orchestrator       in=128   out=39   total=167   bucket="orchestrator: re-plan after version report (resend of question + report)"
+Q4   HANDOFF orchestrator -> code-sample-worker   payload_tokens=32
+Q4   LLM     code-sample-worker in=84    out=18   total=102   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q4   LLM     code-sample-worker in=189   out=48   total=237   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q4   HANDOFF code-sample-worker -> orchestrator         payload_tokens=44
+Q4   LLM     orchestrator       in=218   out=48   total=266   bucket="orchestrator: synthesis (resend of both worker reports)"
+Q4   TOTAL   model_calls=7 hops=4 tokens=1062
+
+Q5   LLM     orchestrator       in=83    out=31   total=114   bucket="orchestrator: decompose (question in)"
+Q5   HANDOFF orchestrator -> version-worker       payload_tokens=12
+Q5   LLM     version-worker     in=56    out=17   total=73    bucket="orchestrator -> version worker (delegation + worker calls)"
+Q5   LLM     version-worker     in=94    out=11   total=105   bucket="orchestrator -> version worker (delegation + worker calls)"
+Q5   HANDOFF version-worker -> orchestrator         payload_tokens=9
+Q5   LLM     orchestrator       in=132   out=38   total=170   bucket="orchestrator: re-plan after version report (resend of question + report)"
+Q5   HANDOFF orchestrator -> code-sample-worker   payload_tokens=31
+Q5   LLM     code-sample-worker in=83    out=18   total=101   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q5   LLM     code-sample-worker in=208   out=38   total=246   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q5   LLM     code-sample-worker in=701   out=435  total=1136  bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q5   HANDOFF code-sample-worker -> orchestrator         payload_tokens=432
+Q5   LLM     orchestrator       in=609   out=435  total=1044  bucket="orchestrator: synthesis (resend of both worker reports)"
+Q5   TOTAL   model_calls=8 hops=4 tokens=2989
+
+Q6   LLM     orchestrator       in=96    out=32   total=128   bucket="orchestrator: decompose (question in)"
+Q6   HANDOFF orchestrator -> version-worker       payload_tokens=14
+Q6   LLM     version-worker     in=57    out=19   total=76    bucket="orchestrator -> version worker (delegation + worker calls)"
+Q6   LLM     version-worker     in=124   out=49   total=173   bucket="orchestrator -> version worker (delegation + worker calls)"
+Q6   HANDOFF version-worker -> orchestrator         payload_tokens=47
+Q6   LLM     orchestrator       in=184   out=76   total=260   bucket="orchestrator: re-plan after version report (resend of question + report)"
+Q6   HANDOFF orchestrator -> code-sample-worker   payload_tokens=68
+Q6   LLM     code-sample-worker in=121   out=44   total=165   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q6   HANDOFF code-sample-worker -> orchestrator         payload_tokens=40
+Q6   LLM     orchestrator       in=308   out=44   total=352   bucket="orchestrator: synthesis (resend of both worker reports)"
+Q6   TOTAL   model_calls=6 hops=4 tokens=1154
+
+Q7   LLM     orchestrator       in=90    out=32   total=122   bucket="orchestrator: decompose (question in)"
+Q7   HANDOFF orchestrator -> version-worker       payload_tokens=14
+Q7   LLM     version-worker     in=57    out=18   total=75    bucket="orchestrator -> version worker (delegation + worker calls)"
+Q7   LLM     version-worker     in=125   out=50   total=175   bucket="orchestrator -> version worker (delegation + worker calls)"
+Q7   HANDOFF version-worker -> orchestrator         payload_tokens=48
+Q7   LLM     orchestrator       in=179   out=78   total=257   bucket="orchestrator: re-plan after version report (resend of question + report)"
+Q7   HANDOFF orchestrator -> code-sample-worker   payload_tokens=70
+Q7   LLM     code-sample-worker in=123   out=18   total=141   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q7   LLM     code-sample-worker in=228   out=45   total=273   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q7   LLM     code-sample-worker in=527   out=256  total=783   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q7   HANDOFF code-sample-worker -> orchestrator         payload_tokens=252
+Q7   LLM     orchestrator       in=516   out=256  total=772   bucket="orchestrator: synthesis (resend of both worker reports)"
+Q7   TOTAL   model_calls=8 hops=4 tokens=2598
+
+Q8   LLM     orchestrator       in=89    out=32   total=121   bucket="orchestrator: decompose (question in)"
+Q8   HANDOFF orchestrator -> version-worker       payload_tokens=14
+Q8   LLM     version-worker     in=57    out=18   total=75    bucket="orchestrator -> version worker (delegation + worker calls)"
+Q8   LLM     version-worker     in=126   out=52   total=178   bucket="orchestrator -> version worker (delegation + worker calls)"
+Q8   HANDOFF version-worker -> orchestrator         payload_tokens=50
+Q8   LLM     orchestrator       in=180   out=78   total=258   bucket="orchestrator: re-plan after version report (resend of question + report)"
+Q8   HANDOFF orchestrator -> code-sample-worker   payload_tokens=71
+Q8   LLM     code-sample-worker in=124   out=47   total=171   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q8   HANDOFF code-sample-worker -> orchestrator         payload_tokens=44
+Q8   LLM     orchestrator       in=309   out=47   total=356   bucket="orchestrator: synthesis (resend of both worker reports)"
+Q8   TOTAL   model_calls=6 hops=4 tokens=1159
+
+Q9   LLM     orchestrator       in=92    out=35   total=127   bucket="orchestrator: decompose (question in)"
+Q9   HANDOFF orchestrator -> version-worker       payload_tokens=17
+Q9   LLM     version-worker     in=60    out=22   total=82    bucket="orchestrator -> version worker (delegation + worker calls)"
+Q9   LLM     version-worker     in=130   out=52   total=182   bucket="orchestrator -> version worker (delegation + worker calls)"
+Q9   HANDOFF version-worker -> orchestrator         payload_tokens=50
+Q9   LLM     orchestrator       in=187   out=80   total=267   bucket="orchestrator: re-plan after version report (resend of question + report)"
+Q9   HANDOFF orchestrator -> code-sample-worker   payload_tokens=73
+Q9   LLM     code-sample-worker in=126   out=47   total=173   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q9   HANDOFF code-sample-worker -> orchestrator         payload_tokens=44
+Q9   LLM     orchestrator       in=318   out=47   total=365   bucket="orchestrator: synthesis (resend of both worker reports)"
+Q9   TOTAL   model_calls=6 hops=4 tokens=1196
+
+Q10  LLM     orchestrator       in=76    out=31   total=107   bucket="orchestrator: decompose (question in)"
+Q10  HANDOFF orchestrator -> version-worker       payload_tokens=13
+Q10  LLM     version-worker     in=56    out=17   total=73    bucket="orchestrator -> version worker (delegation + worker calls)"
+Q10  LLM     version-worker     in=94    out=11   total=105   bucket="orchestrator -> version worker (delegation + worker calls)"
+Q10  HANDOFF version-worker -> orchestrator         payload_tokens=9
+Q10  LLM     orchestrator       in=126   out=38   total=164   bucket="orchestrator: re-plan after version report (resend of question + report)"
+Q10  HANDOFF orchestrator -> code-sample-worker   payload_tokens=31
+Q10  LLM     code-sample-worker in=84    out=18   total=102   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q10  LLM     code-sample-worker in=130   out=31   total=161   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q10  LLM     code-sample-worker in=406   out=203  total=609   bucket="orchestrator -> code-sample worker (delegation + worker calls)"
+Q10  HANDOFF code-sample-worker -> orchestrator         payload_tokens=200
+Q10  LLM     orchestrator       in=372   out=203  total=575   bucket="orchestrator: synthesis (resend of both worker reports)"
+Q10  TOTAL   model_calls=8 hops=4 tokens=1896
+
+# Token share by hand-off bucket (all 10 questions)
+ 37.5%   6,203  orchestrator -> code-sample worker (delegation + worker calls)
+ 30.8%   5,097  orchestrator: synthesis (resend of both worker reports)
+ 12.5%   2,073  orchestrator -> version worker (delegation + worker calls)
+ 12.3%   2,029  orchestrator: re-plan after version report (resend of question + report)
+  6.9%   1,150  orchestrator: decompose (question in)
+
+MULTIPLIER 2.2x = 16552 multi tokens / 7673 single tokens; largest share: orchestrator -> code-sample worker (delegation + worker calls), 37.5% of all tokens
