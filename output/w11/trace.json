@@ -1,0 +1,52 @@
+{
+  "trace_id": "t_b3efb0c1df",
+  "ts": "2026-10-15T14:37:12",
+  "user_id": "u-0417",
+  "app": "slack-bot",
+  "prompt_version": "docs_v1",
+  "retriever_version": "rrf_fusion_v1_k60",
+  "sdk_version_filter": null,
+  "question": "give me a code sample for sending a message with the client",
+  "answered": true,
+  "answer": "Here is a sample from the docs (client_v2::archive::0):\n\n```python\nfrom acme_sdk import Client, AuthConfig\n\nclient = Client(AuthConfig(token=\"sk_live_example\"))\nreply = client.sendMessage(\"hello\")\nprint(reply.body)\n```",
+  "cited_chunk_id": "client_v2::archive::0",
+  "retrieved_chunk_ids": [
+    "client_v2::archive::0",
+    "client_v2::archive::1",
+    "client::structure::1"
+  ],
+  "spans": [
+    {
+      "name": "retrieval",
+      "stage": "retrieval",
+      "latency_ms": 43.8,
+      "tokens_in": 15,
+      "tokens_out": 0,
+      "cost_usd": 4.3e-06,
+      "retriever_version": "rrf_fusion_v1_k60",
+      "top_k": 3,
+      "sdk_version_filter_applied": null,
+      "chunk_ids": [
+        "client_v2::archive::0",
+        "client_v2::archive::1",
+        "client::structure::1"
+      ]
+    },
+    {
+      "name": "generation",
+      "stage": "generation",
+      "latency_ms": 902.6,
+      "tokens_in": 248,
+      "tokens_out": 54,
+      "cost_usd": 0.0004144,
+      "model": "haiku-class (assumed)",
+      "prompt_version": "docs_v1"
+    }
+  ],
+  "totals": {
+    "latency_ms": 946.4,
+    "tokens_in": 263,
+    "tokens_out": 54,
+    "cost_usd": 0.0004187
+  }
+}

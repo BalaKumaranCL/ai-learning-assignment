@@ -20,6 +20,7 @@ from legacy_v2 import build_legacy_v2_chunks  # noqa: E402
 from fusion_retriever import RRFRetriever  # noqa: E402
 from assertions import run_assertions, ASSERTIONS  # noqa: E402
 from judge import judge_v2  # noqa: E402
+from w11_service import build_archive_chunks  # noqa: E402
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 EVAL_SET_PATH = os.path.join(BASE_DIR, "data", "eval_set.json")
@@ -28,7 +29,7 @@ EVAL_SET_PATH = os.path.join(BASE_DIR, "data", "eval_set.json")
 def _build_chunk_by_id():
     pages = load_pages(os.path.join(BASE_DIR, "docs"))
     chunks = chunk_pages(pages, StructureAwareChunker())
-    combined = chunks + build_legacy_v2_chunks()
+    combined = chunks + build_legacy_v2_chunks() + build_archive_chunks()
     return {c.chunk_id: c for c in combined}
 
 

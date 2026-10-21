@@ -1,0 +1,35 @@
+{
+  "log": "data\\w11_prod_logs.jsonl",
+  "lines": 1007,
+  "steps": [
+    {
+      "step": "slice: time window (last week)",
+      "in": 1007,
+      "out": 798,
+      "ms": 0.4
+    },
+    {
+      "step": "scan answered text for deprecated call patterns",
+      "in": 798,
+      "out": 69,
+      "ms": 2.27
+    },
+    {
+      "step": "rule out callers who explicitly asked for v2",
+      "in": 69,
+      "out": 1,
+      "ms": 0.01
+    },
+    {
+      "step": "rule out migration notes (answer says 'deprecated'/'renamed')",
+      "in": 1,
+      "out": 1,
+      "ms": 0.01
+    }
+  ],
+  "total_ms": 2.7,
+  "candidates": [
+    "t_b3efb0c1df"
+  ],
+  "input_only_wrong_leads": 36
+}

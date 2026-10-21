@@ -1,0 +1,22 @@
+{
+  "window": "2026-10-12..2026-10-18",
+  "docs_v1": {
+    "requests": 798,
+    "answered_rate": 0.4474,
+    "unflagged_deprecated_answers": 1,
+    "mean_cost_usd": 0.0004542,
+    "mean_tokens": 373.0,
+    "p50_latency_ms": 869.5,
+    "p99_latency_ms": 3096.7
+  },
+  "docs_v2": {
+    "requests": 798,
+    "answered_rate": 0.5251,
+    "unflagged_deprecated_answers": 0,
+    "mean_cost_usd": 0.00055754,
+    "mean_tokens": 472.9,
+    "p50_latency_ms": 938.2,
+    "p99_latency_ms": 3218.0
+  },
+  "answers_that_changed": 83
+}

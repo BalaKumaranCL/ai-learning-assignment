@@ -2,7 +2,7 @@
 opinion because a parser or a metadata lookup settles them for free and
 never has an off day.
 
-Three assertions, each returning (passed: bool, detail: str):
+Four assertions, each returning (passed: bool, detail: str):
 
 1. no_unflagged_version_mismatch -- the cited chunk's sdk_version must match
    the question's requested sdk_version_filter (when one was given). This is
@@ -19,6 +19,8 @@ Three assertions, each returning (passed: bool, detail: str):
 
 import ast
 import re
+
+import deprecations
 
 CODE_FENCE_RE = re.compile(r"```(?:python)?\n(.*?)```", re.DOTALL)
 
@@ -83,10 +85,19 @@ def cited_chunk_exists(case, chunk_by_id):
     return True, "cited chunk_id exists in the corpus"
 
 
+def no_deprecated_symbol_unflagged(case, chunk_by_id):
+    found = deprecations.unflagged_deprecated_symbols(
+        case["answer"], case["sdk_version_filter"], case.get("answered", True))
+    if found:
+        return False, f"answer uses deprecated {found} with no v2 request and no migration note"
+    return True, "no unflagged deprecated symbol in the answer"
+
+
 ASSERTIONS = [
     ("no_unflagged_version_mismatch", no_unflagged_version_mismatch),
     ("code_sample_parses", code_sample_parses),
     ("cited_chunk_exists", cited_chunk_exists),
+    ("no_deprecated_symbol_unflagged", no_deprecated_symbol_unflagged),
 ]
 
 

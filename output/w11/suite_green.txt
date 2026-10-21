@@ -1,0 +1,38 @@
+Week-6 suite, live, prompt_version=docs_v2, retriever=rrf_fusion_v1_k60
+case  result  detail
+------------------------------------------------------------------------------
+E01   PASS    
+E02   PASS    
+E03   PASS    
+E04   PASS    
+E05   PASS    
+E06   PASS    
+E07   PASS    
+E08   PASS    
+E09   PASS    
+E10   PASS    
+E11   PASS    
+E12   PASS    
+E13   PASS    
+E14   PASS    
+E15   PASS    
+E16   PASS    
+E17   PASS    
+E18   PASS    
+E19   PASS    
+E20   PASS    
+E21   PASS    
+E22   PASS    
+E23   PASS    
+E24   PASS    
+E25   PASS    
+E26   PASS    
+E27   PASS    
+E28   PASS    
+E29   PASS    
+E30   PASS    
+E31   PASS    
+E32   PASS    
+E33   PASS    
+------------------------------------------------------------------------------
+SUITE GREEN: 33/33 pass

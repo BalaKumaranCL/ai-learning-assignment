@@ -7,8 +7,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def _eval_cases():
+    # Only the Week-6 cases: Week-11 cases (E32+) were added later and have no
+    # blind hand label, so they are not part of the judge-agreement number.
     with open(os.path.join(BASE_DIR, "data", "eval_set.json"), encoding="utf-8") as fh:
-        return json.load(fh)
+        cases = json.load(fh)
+    labelled = _labels()
+    return [c for c in cases if c["id"] in labelled]
 
 
 def _labels():

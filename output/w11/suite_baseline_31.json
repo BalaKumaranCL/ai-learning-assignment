@@ -1,0 +1,352 @@
+{
+  "prompt_version": "docs_v1",
+  "passed": 29,
+  "total": 31,
+  "cases": [
+    {
+      "id": "E01",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "streaming::structure::2",
+        "client::structure::3",
+        "client::structure::2"
+      ]
+    },
+    {
+      "id": "E02",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "authentication::structure::3",
+        "authentication::structure::1",
+        "authentication::structure::2"
+      ]
+    },
+    {
+      "id": "E03",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "client::structure::2",
+        "client_v2::legacy::0",
+        "requests::structure::2"
+      ]
+    },
+    {
+      "id": "E04",
+      "passed": true,
+      "failures": [],
+      "cited": "requests::structure::2",
+      "retrieved": [
+        "requests::structure::2",
+        "requests::structure::3",
+        "requests::structure::1"
+      ]
+    },
+    {
+      "id": "E05",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "authentication::structure::1",
+        "streaming::structure::1",
+        "client::structure::0"
+      ]
+    },
+    {
+      "id": "E06",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "authentication::structure::1",
+        "streaming::structure::1",
+        "client::structure::0"
+      ]
+    },
+    {
+      "id": "E07",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "requests::structure::2",
+        "requests::structure::3",
+        "streaming::structure::2"
+      ]
+    },
+    {
+      "id": "E08",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "client::structure::2",
+        "streaming::structure::1",
+        "authentication::structure::4"
+      ]
+    },
+    {
+      "id": "E09",
+      "passed": true,
+      "failures": [],
+      "cited": "streaming::structure::0",
+      "retrieved": [
+        "streaming::structure::0",
+        "responses::structure::0",
+        "client::structure::1"
+      ]
+    },
+    {
+      "id": "E10",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "authentication::structure::1",
+        "authentication::structure::0",
+        "responses::structure::2"
+      ]
+    },
+    {
+      "id": "E11",
+      "passed": true,
+      "failures": [],
+      "cited": "errors::structure::1",
+      "retrieved": [
+        "errors::structure::1",
+        "responses::structure::4",
+        "authentication::structure::2"
+      ]
+    },
+    {
+      "id": "E12",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "authentication::structure::1",
+        "authentication::structure::4",
+        "errors::structure::0"
+      ]
+    },
+    {
+      "id": "E13",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "client::structure::2",
+        "client::structure::3",
+        "client::structure::0"
+      ]
+    },
+    {
+      "id": "E14",
+      "passed": true,
+      "failures": [],
+      "cited": "client::structure::4",
+      "retrieved": [
+        "client::structure::4",
+        "client_v2::legacy::1",
+        "client_v2::archive::1"
+      ]
+    },
+    {
+      "id": "E15",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "streaming::structure::2",
+        "client_v2::legacy::0",
+        "requests::structure::2"
+      ]
+    },
+    {
+      "id": "E16",
+      "passed": true,
+      "failures": [],
+      "cited": "responses::structure::3",
+      "retrieved": [
+        "responses::structure::3",
+        "responses::structure::4",
+        "streaming::structure::1"
+      ]
+    },
+    {
+      "id": "E17",
+      "passed": true,
+      "failures": [],
+      "cited": "requests::structure::4",
+      "retrieved": [
+        "requests::structure::4",
+        "authentication::structure::4",
+        "authentication::structure::1"
+      ]
+    },
+    {
+      "id": "E18",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "authentication::structure::2",
+        "authentication::structure::4",
+        "client::structure::2"
+      ]
+    },
+    {
+      "id": "E19",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "client::structure::3",
+        "streaming::structure::2",
+        "client::structure::2"
+      ]
+    },
+    {
+      "id": "E20",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "client::structure::2",
+        "streaming::structure::1",
+        "authentication::structure::4"
+      ]
+    },
+    {
+      "id": "E21",
+      "passed": false,
+      "failures": [
+        "no_unflagged_version_mismatch: no sdk_version_filter was requested at all, and the cited chunk is v2 -- legacy content should never be the unrequested default"
+      ],
+      "cited": "client_v2::legacy::0",
+      "retrieved": [
+        "client_v2::legacy::0",
+        "client::structure::3",
+        "client::structure::2"
+      ]
+    },
+    {
+      "id": "E22",
+      "passed": false,
+      "failures": [
+        "no_unflagged_version_mismatch: no sdk_version_filter was requested at all, and the cited chunk is v2 -- legacy content should never be the unrequested default"
+      ],
+      "cited": "client_v2::legacy::0",
+      "retrieved": [
+        "client_v2::legacy::0",
+        "client::structure::3",
+        "client::structure::2"
+      ]
+    },
+    {
+      "id": "E23",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "authentication::structure::1",
+        "requests::structure::0",
+        "requests::structure::4"
+      ]
+    },
+    {
+      "id": "E24",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "authentication::structure::1",
+        "authentication::structure::2",
+        "authentication::structure::3"
+      ]
+    },
+    {
+      "id": "E25",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "responses::structure::2",
+        "responses::structure::1",
+        "responses::structure::0"
+      ]
+    },
+    {
+      "id": "E26",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "streaming::structure::1",
+        "streaming::structure::3",
+        "migration_v3::archive::2"
+      ]
+    },
+    {
+      "id": "E27",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "responses::structure::4",
+        "errors::structure::0",
+        "client::structure::1"
+      ]
+    },
+    {
+      "id": "E28",
+      "passed": true,
+      "failures": [],
+      "cited": "client::structure::3",
+      "retrieved": [
+        "client::structure::3",
+        "streaming::structure::3",
+        "errors::structure::2"
+      ]
+    },
+    {
+      "id": "E29",
+      "passed": true,
+      "failures": [],
+      "cited": "errors::structure::1",
+      "retrieved": [
+        "errors::structure::1",
+        "responses::structure::4",
+        "streaming::structure::2"
+      ]
+    },
+    {
+      "id": "E30",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "client::structure::1",
+        "client::structure::0",
+        "migration_v3::archive::2"
+      ]
+    },
+    {
+      "id": "E31",
+      "passed": true,
+      "failures": [],
+      "cited": null,
+      "retrieved": [
+        "authentication::structure::4",
+        "errors::structure::0",
+        "streaming::structure::1"
+      ]
+    }
+  ]
+}
