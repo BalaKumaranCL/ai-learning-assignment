@@ -401,5 +401,39 @@
     "taxonomy_mode": "correctly_refused_oos",
     "source": "fresh",
     "is_regression": false
+  },
+  {
+    "id": "E32",
+    "question": "give me a code sample for sending a message with the client",
+    "sdk_version_filter": null,
+    "answered": true,
+    "answer": "Here is a sample from the docs (client_v2::archive::0):\n\n```python\nfrom acme_sdk import Client, AuthConfig\n\nclient = Client(AuthConfig(token=\"sk_live_example\"))\nreply = client.sendMessage(\"hello\")\nprint(reply.body)\n```",
+    "cited_chunk_id": "client_v2::archive::0",
+    "cited_chunk_sdk_version": "v2",
+    "cited_chunk_anchor": "Sending a message > Code sample (v2)",
+    "taxonomy_mode": "stale_deprecated_sample",
+    "source": "w11_incident:t_b3efb0c1df",
+    "is_regression": true,
+    "expect_answered": true,
+    "must_contain": [
+      "client.send("
+    ]
+  },
+  {
+    "id": "E33",
+    "question": "In SDK v2, show me a code sample of Client.sendMessage",
+    "sdk_version_filter": "v2",
+    "answered": true,
+    "answer": "Here is a sample from the docs (client_v2::archive::0):\n\n```python\nfrom acme_sdk import Client, AuthConfig\n\nclient = Client(AuthConfig(token=\"sk_live_example\"))\nreply = client.sendMessage(\"hello\")\nprint(reply.body)\n```",
+    "cited_chunk_id": "client_v2::archive::0",
+    "cited_chunk_sdk_version": "v2",
+    "cited_chunk_anchor": "Sending a message > Code sample (v2)",
+    "taxonomy_mode": "correct_complete",
+    "source": "w11_guard:v2-legacy-support",
+    "is_regression": false,
+    "expect_answered": true,
+    "must_contain": [
+      "sendMessage"
+    ]
   }
 ]

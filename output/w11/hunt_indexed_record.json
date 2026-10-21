@@ -1,0 +1,23 @@
+{
+  "log": "data\\w11_prod_logs_v2.jsonl",
+  "lines": 1007,
+  "steps": [
+    {
+      "step": "slice: time window (last week)",
+      "in": 1007,
+      "out": 798,
+      "ms": 0.48
+    },
+    {
+      "step": "slice: output_flags.deprecated_symbols_unflagged is non-empty",
+      "in": 798,
+      "out": 1,
+      "ms": 0.21
+    }
+  ],
+  "total_ms": 0.7,
+  "candidates": [
+    "t_f5d1279f52"
+  ],
+  "input_only_wrong_leads": 36
+}

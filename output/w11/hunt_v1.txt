@@ -1,0 +1,10 @@
+log file: C:\Users\Pacewisdom-PC\Desktop\ai-learning-assignment\data\w11_prod_logs.jsonl  (1007 lines, loaded in 13.1 ms)
+  slice: time window (last week)                                      1007 -> 798      0.54 ms
+  scan answered text for deprecated call patterns                      798 -> 69       2.44 ms
+  rule out callers who explicitly asked for v2                          69 -> 1        0.01 ms
+  rule out migration notes (answer says 'deprecated'/'renamed')          1 -> 1        0.01 ms
+hunt time (script clock): 00:00.00  (3.01 ms)
+candidates left: 1
+  FOUND t_b3efb0c1df  ts=2026-10-15T14:37:12  user=u-0417  app=slack-bot  prompt=docs_v1
+        context ids: ['client_v2::archive::0', 'client_v2::archive::1', 'client::structure::1']
+(for contrast: grepping only the QUESTION for a deprecated name gives 36 wrong leads)

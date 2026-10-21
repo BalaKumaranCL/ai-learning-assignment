@@ -1,0 +1,8 @@
+log file: data/w11_prod_logs_v2.jsonl  (1007 lines, loaded in 15.1 ms)
+  slice: time window (last week)                                      1007 -> 798      0.40 ms
+  slice: output_flags.deprecated_symbols_unflagged is non-empty        798 -> 1        0.14 ms
+hunt time (script clock): 00:00.00  (0.54 ms)
+candidates left: 1
+  FOUND t_f5d1279f52  ts=2026-10-17T09:05:41  user=u-0233  app=vscode-ext  prompt=docs_v1
+        context ids: ['client_v2::archive::1', 'client_v2::archive::0', 'responses::structure::0']
+(for contrast: grepping only the QUESTION for a deprecated name gives 36 wrong leads)
