@@ -1,0 +1,123 @@
+{
+ "naive": {
+  "n": 38,
+  "pass": 2,
+  "fail": 34,
+  "xfail": 2,
+  "xpass": 0,
+  "pass_rate_of_counted": 0.0556,
+  "answers_with_code": 29,
+  "wrong_version_code": 12,
+  "wrong_version_code_rate": 0.4138,
+  "trace_broken": 36,
+  "canary_leaks": 3,
+  "canary_cases": 3,
+  "misresolved": 5
+ },
+ "fixed": {
+  "n": 38,
+  "pass": 36,
+  "fail": 0,
+  "xfail": 2,
+  "xpass": 0,
+  "pass_rate_of_counted": 1.0,
+  "answers_with_code": 27,
+  "wrong_version_code": 0,
+  "wrong_version_code_rate": 0.0,
+  "trace_broken": 0,
+  "canary_leaks": 0,
+  "canary_cases": 3,
+  "misresolved": 0
+ },
+ "judge": {
+  "n": 36,
+  "agree": 32,
+  "rate": 0.8888888888888888,
+  "disagreements": [
+   {
+    "id": "C07",
+    "judge": "Y",
+    "label": "N",
+    "reason": "never says the caller's OWN pasted Client(api_key=...) cannot run on 2.4; blames AuthConfig instead and answers with an unrelated-to-the-paste sample"
+   },
+   {
+    "id": "C21",
+    "judge": "Y",
+    "label": "N",
+    "reason": "says per_page -> limit but never states page -> cursor in words (only the sample shows it); the question asked about both"
+   },
+   {
+    "id": "C34",
+    "judge": "Y",
+    "label": "N",
+    "reason": "a 429 question answered with an authentication paragraph and a header sample, with full confidence: junk"
+   },
+   {
+    "id": "C36",
+    "judge": "N",
+    "label": "Y",
+    "reason": "nothing in 2.1 can take a header (RequestOptions needs send(), 2.2): a plain 'I can't answer that' is correct"
+   }
+  ]
+ },
+ "trajectory": {
+  "n": 13,
+  "outcome_pass_rate": 1.0,
+  "trajectory_pass_rate": 0.8462,
+  "outcome_vs_trajectory_gap": 0.1538,
+  "tool_choice_accuracy": 0.9855,
+  "tool_calls": 69,
+  "argument_validity_rate": 1.0,
+  "path_match_rate": 0.9231,
+  "path_completeness_rate": 0.9231
+ },
+ "retrieval": {
+  "n": 12,
+  "A_hit_at_3": 0.9166666666666666,
+  "B_hit_at_3": 0.9166666666666666,
+  "C_hit_at_3": 0.8333333333333334,
+  "bridge_fired": 5,
+  "C_so_in_top3": 9,
+  "C_so_top1": 9,
+  "A_so_leaks": 0,
+  "gained_by_so_bridge": 0.0
+ },
+ "first_to_break": {
+  "constraint": "Monthly budget",
+  "load_at_1x": 300.46879058823544,
+  "limit": 2000,
+  "breaks_at": 6.7,
+  "basis": "$0.00397 per question"
+ },
+ "p99_ms": 8059.1649,
+ "bonus": {
+  "naive": {
+   "parses_only": {
+    "passing_with_code": 29,
+    "went_red": 12
+   },
+   "looks_like_code": {
+    "passing_with_code": 6,
+    "went_red": 1
+   },
+   "old_bar": {
+    "passing_with_code": 6,
+    "went_red": 1
+   }
+  },
+  "fixed": {
+   "parses_only": {
+    "passing_with_code": 27,
+    "went_red": 0
+   },
+   "looks_like_code": {
+    "passing_with_code": 27,
+    "went_red": 0
+   },
+   "old_bar": {
+    "passing_with_code": 27,
+    "went_red": 0
+   }
+  }
+ }
+}

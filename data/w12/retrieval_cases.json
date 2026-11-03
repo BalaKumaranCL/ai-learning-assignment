@@ -1,0 +1,17 @@
+{
+  "_comment": "Retrieval-only cases for the Stack Overflow question (hostile question 3: 'why is that page in your corpus, and what does your hit-rate lose if you drop it?'). 12 colloquial phrasings, each with the doc PAGES a correct top-3 should include for that caller's version. Written before the ablation was run; the expansion logic in w12_index was NOT tuned on these.",
+  "cases": [
+    {"id": "R01", "query": "my call just hangs forever and never returns", "version": "2.4", "pages": ["client", "errors"]},
+    {"id": "R02", "query": "the request just freezes when the network is slow", "version": "2.4", "pages": ["client", "errors"]},
+    {"id": "R03", "query": "got a 429 too many requests how do I back off", "version": "3.0", "pages": ["errors"]},
+    {"id": "R04", "query": "where does my key go, getting 401", "version": "3.0", "pages": ["authentication"]},
+    {"id": "R05", "query": "how do I get the next page of results", "version": "3.0", "pages": ["pagination"]},
+    {"id": "R06", "query": "how can I stop leaking connections", "version": "2.4", "pages": ["client"]},
+    {"id": "R07", "query": "add an extra HTTP header to every call", "version": "2.4", "pages": ["requests"]},
+    {"id": "R08", "query": "read the status from the reply", "version": "3.0", "pages": ["responses"]},
+    {"id": "R09", "query": "stream the answer bit by bit", "version": "2.4", "pages": ["streaming"]},
+    {"id": "R10", "query": "retry automatically when it fails", "version": "3.0", "pages": ["client", "errors"]},
+    {"id": "R11", "query": "what error do I get for a bad parameter", "version": "3.0", "pages": ["errors"]},
+    {"id": "R12", "query": "how do I rotate my key", "version": "3.0", "pages": ["authentication"]}
+  ]
+}

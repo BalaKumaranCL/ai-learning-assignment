@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "acme-sdk-docs": {
+      "command": "python",
+      "args": ["mcp_servers/w12_sdk_docs_server.py"]
+    }
+  }
+}
