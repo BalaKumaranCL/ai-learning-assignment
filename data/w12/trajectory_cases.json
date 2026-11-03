@@ -1,0 +1,18 @@
+{
+  "_comment": "Week 12 trajectory eval: 13 cases, each a VIEW on an eval case (same question, same IDE version), plus the tool path a correct agent should take. Written by reasoning from the corpus BEFORE the agent was scored on it. A trajectory is the sequence of NEEDS (search / exists / lifecycle / verify) in the order the agent issued them, consecutive repeats collapsed (several calls in one lap are parallel). `accepted` lists every legitimate sequence: the sweep at the end is optional only where the final code or text touches no symbol with a lifecycle event.",
+  "cases": [
+    {"id": "T01", "eval_case": "C01", "why": "plain how-to on 2.4: find a sample + docs, verify the sample, then check lifecycle of what it uses", "accepted": [["search", "verify", "lifecycle"]]},
+    {"id": "T02", "eval_case": "C14", "why": "plain how-to on 3.0: same path; nothing in 3.0 is deprecated so a missing sweep is also fine", "accepted": [["search", "verify", "lifecycle"], ["search", "verify"]]},
+    {"id": "T03", "eval_case": "C18", "why": "names a method and asks about 3.0: existence at 3.0, lifecycle, upgrade info + sample + docs, verify the replacement's sample", "accepted": [["exists", "lifecycle", "search", "verify", "lifecycle"], ["exists", "lifecycle", "search", "verify"]]},
+    {"id": "T04", "eval_case": "C23", "why": "a method that never existed: check it, find the nearest real name's docs; no sample, no lifecycle of the unknown name", "accepted": [["exists", "search"], ["exists", "search", "lifecycle"]]},
+    {"id": "T05", "eval_case": "C26", "why": "factual: existence + lifecycle of the named method, one docs search; no sample to verify", "accepted": [["exists", "lifecycle", "search"], ["exists", "lifecycle", "search", "lifecycle"]]},
+    {"id": "T06", "eval_case": "C20", "why": "asks whether an argument is removed: existence + lifecycle, then migration info, a replacement sample, verify", "accepted": [["exists", "lifecycle", "search", "verify", "lifecycle"], ["exists", "lifecycle", "search", "verify"]]},
+    {"id": "T07", "eval_case": "C06", "why": "major version only: still search, verify and sweep", "accepted": [["search", "verify", "lifecycle"]]},
+    {"id": "T08", "eval_case": "C05", "why": "no version anywhere: NO tool at all, ask the caller", "accepted": [[]]},
+    {"id": "T09", "eval_case": "C11", "why": "plain how-to", "accepted": [["search", "verify", "lifecycle"]]},
+    {"id": "T10", "eval_case": "C08", "why": "plain how-to on 2.4 whose sample uses arguments removed in 3.0: the sweep is REQUIRED", "accepted": [["search", "verify", "lifecycle"]]},
+    {"id": "T11", "eval_case": "C04", "why": "version inferred from an error message, then existence + lifecycle of the missing method, search, verify", "accepted": [["exists", "lifecycle", "search", "verify", "lifecycle"], ["exists", "lifecycle", "search", "verify"]]},
+    {"id": "T12", "eval_case": "C36", "why": "a 2.1 caller asks for something 2.1 cannot do: search finds nothing relevant, so nothing to verify and nothing to sweep", "accepted": [["search"]]},
+    {"id": "T13", "eval_case": "C30", "why": "a pasted secret changes nothing about the path", "accepted": [["search", "verify", "lifecycle"]]}
+  ]
+}

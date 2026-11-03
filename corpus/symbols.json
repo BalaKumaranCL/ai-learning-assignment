@@ -1,0 +1,117 @@
+{
+  "_comment": "STAND-IN symbol manifest for the Acme SDK, v2.0-v2.9 and v3.0. One source of truth for: the symbol-exists tool, the changelog/deprecation tool, and the code-sample checker (src/w12_codecheck.py). Each symbol has introduced / deprecated / removed versions. It REFINES data/changelog.json (Weeks 7-11 said 'deprecated_in v3'): here the four renames were announced as deprecated during 2.x and are REMOVED in 3.0, which is what makes 'that method no longer exists in 3.0' a true sentence. tests/test_w12.py checks every name in data/changelog.json is in this file with removed=3.0.",
+  "package": "acme_sdk",
+  "latest": {"2": "2.9", "3": "3.0"},
+  "exports": [
+    {"id": "Client", "introduced": "2.0"},
+    {"id": "AuthConfig", "introduced": "2.0"},
+    {"id": "RequestOptions", "introduced": "2.0"},
+    {"id": "Response", "introduced": "2.0"},
+    {"id": "StreamChunk", "introduced": "2.4"},
+    {"id": "AcmeError", "introduced": "2.0"},
+    {"id": "TimeoutError", "introduced": "2.0"},
+    {"id": "RateLimitError", "introduced": "2.0"},
+    {"id": "AuthError", "introduced": "2.0"},
+    {"id": "ValidationError", "introduced": "2.0"}
+  ],
+  "members": [
+    {
+      "id": "Client", "kind": "class", "introduced": "2.0", "returns": "Client",
+      "params": [
+        {"name": "auth", "introduced": "2.0"},
+        {"name": "api_key", "introduced": "2.5"}
+      ],
+      "one_of": [["auth", "api_key"]]
+    },
+    {
+      "id": "Client.sendMessage", "kind": "method", "introduced": "2.0", "deprecated": "2.4", "removed": "3.0",
+      "replacement": "Client.send", "replacement_available_since": "2.2", "returns": "Response",
+      "note": "Renamed to Client.send; same request shape.",
+      "params": [
+        {"name": "message", "required": true, "introduced": "2.0"},
+        {"name": "timeout_ms", "introduced": "2.0"}
+      ]
+    },
+    {
+      "id": "Client.send", "kind": "method", "introduced": "2.2", "returns": "Response",
+      "params": [
+        {"name": "message", "required": true, "introduced": "2.2"},
+        {"name": "timeout_ms", "introduced": "2.2"},
+        {"name": "retry_backoff_ms", "introduced": "2.2"},
+        {"name": "max_retries", "introduced": "3.0"},
+        {"name": "options", "introduced": "2.2"}
+      ]
+    },
+    {
+      "id": "Client.pollStream", "kind": "method", "introduced": "2.0", "deprecated": "2.4", "removed": "3.0",
+      "replacement": "Client.stream", "replacement_available_since": "2.4", "returns": "Poller",
+      "note": "The manual poll-in-a-loop pattern is replaced by a lazy iterator you can 'for' over.",
+      "params": [
+        {"name": "message", "required": true, "introduced": "2.0"},
+        {"name": "poll_interval_ms", "introduced": "2.0"}
+      ]
+    },
+    {
+      "id": "Client.stream", "kind": "method", "introduced": "2.4", "returns": "StreamIter",
+      "params": [
+        {"name": "message", "required": true, "introduced": "2.4"},
+        {"name": "timeout_ms", "introduced": "2.4"},
+        {"name": "chunk_size", "introduced": "2.4"}
+      ]
+    },
+    {
+      "id": "Client.list_messages", "kind": "method", "introduced": "2.0", "returns": "ListResult",
+      "params": [
+        {"name": "page", "introduced": "2.0", "deprecated": "2.6", "removed": "3.0", "replacement": "cursor"},
+        {"name": "per_page", "introduced": "2.0", "deprecated": "2.6", "removed": "3.0", "replacement": "limit"},
+        {"name": "limit", "introduced": "2.6"},
+        {"name": "cursor", "introduced": "2.6"}
+      ]
+    },
+    {"id": "Client.close", "kind": "method", "introduced": "2.0", "returns": null, "params": []},
+    {
+      "id": "AuthConfig", "kind": "class", "introduced": "2.0", "returns": "AuthConfig",
+      "params": [
+        {"name": "token", "introduced": "2.0", "deprecated": "2.5", "removed": "3.0", "replacement": "api_key"},
+        {"name": "api_key", "introduced": "2.5"},
+        {"name": "region", "introduced": "2.0"},
+        {"name": "token_refresh_ms", "introduced": "3.0"}
+      ],
+      "one_of": [["token", "api_key"]]
+    },
+    {
+      "id": "RequestOptions", "kind": "class", "introduced": "2.0", "returns": "RequestOptions",
+      "params": [
+        {"name": "custom_headers", "introduced": "2.0", "deprecated": "2.5", "removed": "3.0", "replacement": "headers"},
+        {"name": "headers", "introduced": "2.5"},
+        {"name": "query_params", "introduced": "2.0"},
+        {"name": "body_encoding", "introduced": "3.0"}
+      ]
+    },
+    {"id": "Poller.next", "kind": "method", "introduced": "2.0", "removed": "3.0", "returns": "PollChunk", "params": []}
+  ],
+  "types": {
+    "Response": [
+      {"name": "status_code", "introduced": "2.0"},
+      {"name": "body", "introduced": "2.0"},
+      {"name": "headers", "introduced": "2.0"}
+    ],
+    "StreamChunk": [
+      {"name": "text", "introduced": "2.4"},
+      {"name": "is_final", "introduced": "2.4"}
+    ],
+    "PollChunk": [
+      {"name": "text", "introduced": "2.0", "removed": "3.0"}
+    ],
+    "Poller": [
+      {"name": "done", "introduced": "2.0", "removed": "3.0"},
+      {"name": "next", "introduced": "2.0", "removed": "3.0", "callable": true}
+    ],
+    "ListResult": [
+      {"name": "items", "introduced": "2.0"},
+      {"name": "page", "introduced": "2.0", "removed": "3.0"},
+      {"name": "total_pages", "introduced": "2.0", "removed": "3.0"},
+      {"name": "next_cursor", "introduced": "2.6"}
+    ]
+  }
+}
